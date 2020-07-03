@@ -1,15 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".InicioReproductor">
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start">
 
-    <SeekBar
-        android:id="@+id/seekBar"
-        android:layout_width="364dp"
-        android:layout_height="52dp"
-        tools:layout_editor_absoluteX="17dp"
-        tools:layout_editor_absoluteY="469dp" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <include
+        layout="@layout/inicio_reproductor_content_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/inicio_reproductor_header"
+        app:menu="@menu/inicio_reproductor_menu"/>
+
+</androidx.drawerlayout.widget.DrawerLayout>
