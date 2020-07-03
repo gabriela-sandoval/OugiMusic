@@ -10,6 +10,10 @@
             android:id="@+id/nav_buscar"
             android:icon="@drawable/ic_baseline_search_24"
             android:title="Buscar"/>
+        <item
+            android:id="@+id/nav_radio"
+            android:icon="@drawable/radio"
+            android:title="Radio"/>
     </group>
 
 
@@ -20,9 +24,40 @@
                 android:icon="@drawable/library_music"
                 android:title="Playlist"/>
             <item
+                android:id="@+id/nav_albumes"
+                android:icon="@drawable/albumes"
+                android:title="Álbumes"/>
+            <item
                 android:id="@+id/nav_artistas"
                 android:icon="@drawable/artista"
                 android:title="Artistas"/>
+            <item
+                android:id="@+id/nav_canciones"
+                android:icon="@drawable/canciones"
+                android:title="Canciones"/>
+            <item
+                android:id="@+id/nav_generos"
+                android:icon="@drawable/generos"
+                android:title="Géneros"/>
+            <item
+                android:id="@+id/nav_descargas"
+                android:icon="@drawable/descargas"
+                android:title="Descargas"/>
         </menu>
     </item>
+
+    <item android:title="Configuración">
+        <menu>
+            <item
+                android:id="@+id/nav_historial_reproduccion"
+                android:icon="@drawable/historial"
+                android:title="Historial de reproducción"/>
+            <item
+                android:id="@+id/nav_calidad_audio"
+                android:icon="@drawable/calidad"
+                android:title="Calidad de audio"/>
+        </menu>
+    </item>
+
+
 </menu>

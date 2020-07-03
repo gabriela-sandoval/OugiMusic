@@ -16,5 +16,11 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+
+        buttonRegistrarse.setOnClickListener {
+            val intent: Intent = Intent(this, RegistrarUsuario::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 }
