@@ -1,5 +1,6 @@
 package com.example.ougimusic
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Toast
@@ -37,10 +38,14 @@ class InicioReproductor : AppCompatActivity(), NavigationView.OnNavigationItemSe
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.nav_inicio -> {
-                Toast.makeText(this, "Profile clicked", Toast.LENGTH_SHORT).show()
+                val intent: Intent = Intent(this, InicioReproductor::class.java)
+                startActivity(intent)
+                finish()
             }
             R.id.nav_buscar -> {
-                Toast.makeText(this, "Messages clicked", Toast.LENGTH_SHORT).show()
+                val intent: Intent = Intent(this, Buscar::class.java)
+                startActivity(intent)
+                finish()
             }
             R.id.nav_playlist -> {
                 Toast.makeText(this, "Friends clicked", Toast.LENGTH_SHORT).show()
