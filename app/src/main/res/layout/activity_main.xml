@@ -11,7 +11,7 @@
         android:id="@+id/buttonRegistrarse"
         android:layout_width="106dp"
         android:layout_height="23dp"
-        android:background="#005252"
+        android:background="#707A7A"
         android:text="Registrarse"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
