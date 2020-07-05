@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginLeft="15dp"
+        android:background="@drawable/fondoalbum" />
+
+    <LinearLayout
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="10dp">
+
+        <TextView
+            android:id="@+id/textViewNombreArtista"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nombre álbum"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/textViewArtista"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Artista" />
+
+        <TextView
+            android:id="@+id/textViewAño"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Año"
+            android:textSize="10sp" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/buttonPlay"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="15dp"
+        android:background="@android:drawable/ic_media_play" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>

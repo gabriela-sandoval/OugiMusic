@@ -53,6 +53,11 @@ class InicioReproductor : AppCompatActivity(), NavigationView.OnNavigationItemSe
             R.id.nav_artistas -> {
                 Toast.makeText(this, "Update clicked", Toast.LENGTH_SHORT).show()
             }
+            R.id.nav_albumes -> {
+                val intent: Intent = Intent(this, Albumes::class.java)
+                startActivity(intent)
+                finish()
+            }
         }
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
