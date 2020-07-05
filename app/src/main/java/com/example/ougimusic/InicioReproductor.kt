@@ -62,6 +62,26 @@ class InicioReproductor : AppCompatActivity(), NavigationView.OnNavigationItemSe
                 startActivity(intent)
                 finish()
             }
+            R.id.nav_canciones -> {
+                val intent: Intent = Intent(this, Canciones::class.java)
+                startActivity(intent)
+                finish()
+            }
+            R.id.nav_generos -> {
+                val intent: Intent = Intent(this, Generos::class.java)
+                startActivity(intent)
+                finish()
+            }
+            R.id.nav_descargas -> {
+                val intent: Intent = Intent(this, Canciones::class.java)
+                startActivity(intent)
+                finish()
+            }
+            R.id.nav_historial_reproduccion -> {
+                val intent: Intent = Intent(this, Canciones::class.java)
+                startActivity(intent)
+                finish()
+            }
         }
         drawerLayout.closeDrawer(GravityCompat.START)
         return true

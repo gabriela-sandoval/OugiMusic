@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Canciones"></activity>
+        <activity android:name=".Generos"></activity>
+        <activity android:name=".Canciones" />
         <activity android:name=".Playlists" />
         <activity android:name=".Artistas" />
         <activity android:name=".Albumes" />
