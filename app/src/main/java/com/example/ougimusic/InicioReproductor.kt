@@ -51,7 +51,9 @@ class InicioReproductor : AppCompatActivity(), NavigationView.OnNavigationItemSe
                 Toast.makeText(this, "Friends clicked", Toast.LENGTH_SHORT).show()
             }
             R.id.nav_artistas -> {
-                Toast.makeText(this, "Update clicked", Toast.LENGTH_SHORT).show()
+                val intent: Intent = Intent(this, Artistas::class.java)
+                startActivity(intent)
+                finish()
             }
             R.id.nav_albumes -> {
                 val intent: Intent = Intent(this, Albumes::class.java)
