@@ -11,8 +11,6 @@ class Canciones : AppCompatActivity() {
         setContentView(R.layout.activity_canciones)
 
         buttonRegresar.setOnClickListener {
-            val intent: Intent = Intent(this, InicioReproductor::class.java)
-            startActivity(intent)
             finish()
         }
     }

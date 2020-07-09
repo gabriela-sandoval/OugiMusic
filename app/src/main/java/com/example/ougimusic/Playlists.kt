@@ -12,15 +12,12 @@ class Playlists : AppCompatActivity() {
         setContentView(R.layout.activity_playlists)
 
         buttonRegresar.setOnClickListener {
-            val intent: Intent = Intent(this, InicioReproductor::class.java)
-            startActivity(intent)
             finish()
         }
 
         layoutPlayList.setOnClickListener {
-            val intent: Intent = Intent(this, Canciones::class.java)
+            val intent = Intent(this, Canciones::class.java)
             startActivity(intent)
-            finish()
         }
     }
 }

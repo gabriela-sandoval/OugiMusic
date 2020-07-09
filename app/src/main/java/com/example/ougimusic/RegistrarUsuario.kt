@@ -74,34 +74,34 @@ class RegistrarUsuario : AppCompatActivity() {
                 .build()
         client.newCall(request).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
-                runOnUiThread({
+                runOnUiThread {
                     val failure = AlertDialog.Builder(this@RegistrarUsuario)
                     failure.setTitle("Error")
                     failure.setMessage("Error al conectarse con la base de datos \n Reintentar mas tarde")
 
-                    failure.setPositiveButton("Ok", { dialog, _ ->
+                    failure.setPositiveButton("Ok") { dialog, _ ->
                         dialog.cancel()
-                    })
-                    failure.show() })
+                    }
+                    failure.show() }
             }
 
             override fun onResponse(call: Call, response: Response) {
                 response.use {
                     if (!response.isSuccessful){
-                        runOnUiThread({
+                        runOnUiThread {
                             Toast.makeText(applicationContext, "Error al registrar \n Revisa tus datos y reintentalo", Toast.LENGTH_SHORT).show()
-                        })
+                        }
                     }else{
-                        runOnUiThread({
-                        val failure = AlertDialog.Builder(this@RegistrarUsuario)
-                        failure.setTitle("Registrado!!")
-                        failure.setMessage("Registrado correctamente \n Puedes ingresar al sistema")
+                        runOnUiThread {
+                            val failure = AlertDialog.Builder(this@RegistrarUsuario)
+                            failure.setTitle("Registrado!!")
+                            failure.setMessage("Registrado correctamente \n Puedes ingresar al sistema")
 
-                        failure.setPositiveButton("Ok", { dialog, _ ->
-                            dialog.cancel()
-                            finish()
-                        })
-                        failure.show() })
+                            failure.setPositiveButton("Ok") { dialog, _ ->
+                                dialog.cancel()
+                                finish()
+                            }
+                            failure.show() }
                     }
 
                 }
