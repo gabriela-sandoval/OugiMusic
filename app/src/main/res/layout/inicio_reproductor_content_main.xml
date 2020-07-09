@@ -45,7 +45,7 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/imageView7"
+                android:id="@+id/image"
                 android:layout_width="312dp"
                 android:layout_height="315dp"
                 android:layout_marginTop="36dp"
@@ -56,28 +56,30 @@
                 app:srcCompat="@drawable/fondoalbum" />
 
             <SeekBar
-                android:id="@+id/seekBar2"
+                android:id="@+id/barraProgreso"
                 android:layout_width="335dp"
                 android:layout_height="27dp"
-                app:layout_constraintBottom_toTopOf="@+id/button2"
+                app:layout_constraintBottom_toTopOf="@+id/botonAnterior"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.945" />
 
             <Button
-                android:id="@+id/buttonPlay"
+                android:id="@+id/botonPlay"
                 android:layout_width="66dp"
                 android:layout_height="69dp"
                 android:layout_marginBottom="64dp"
                 android:background="@drawable/play_button"
+                android:onClick="playBtnClick"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent" />
 
+
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/botonSiguiente"
                 android:layout_width="66dp"
                 android:layout_height="69dp"
                 android:layout_marginEnd="68dp"
@@ -86,16 +88,16 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.641"
-                app:layout_constraintStart_toEndOf="@+id/buttonPlay" />
+                app:layout_constraintStart_toEndOf="@+id/botonPlay" />
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/botonAnterior"
                 android:layout_width="66dp"
                 android:layout_height="69dp"
                 android:layout_marginBottom="64dp"
                 android:background="@drawable/previous"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/buttonPlay"
+                app:layout_constraintEnd_toStartOf="@+id/botonPlay"
                 app:layout_constraintHorizontal_bias="0.754"
                 app:layout_constraintStart_toStartOf="parent" />
 
@@ -108,7 +110,7 @@
                 android:text="Nombre artista"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@+id/seekBar2"
+                app:layout_constraintBottom_toTopOf="@+id/barraProgreso"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.494"
                 app:layout_constraintStart_toStartOf="parent"
@@ -127,7 +129,7 @@
                 app:layout_constraintEnd_toStartOf="@+id/textViewFinCancion"
                 app:layout_constraintHorizontal_bias="0.147"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/seekBar2" />
+                app:layout_constraintTop_toBottomOf="@+id/barraProgreso" />
 
             <TextView
                 android:id="@+id/textViewFinCancion"
@@ -139,7 +141,7 @@
                 android:textSize="10sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/seekBar2"
+                app:layout_constraintTop_toBottomOf="@+id/barraProgreso"
                 app:layout_constraintVertical_bias="0.0" />
 
             <TextView

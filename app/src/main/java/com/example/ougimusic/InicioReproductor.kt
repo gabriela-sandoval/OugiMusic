@@ -8,6 +8,9 @@ import android.media.MediaPlayer.OnPreparedListener
 import android.os.Build
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
+import android.widget.Button
+import android.widget.SeekBar
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -21,8 +24,12 @@ class InicioReproductor : AppCompatActivity(), NavigationView.OnNavigationItemSe
     lateinit var toolbar: Toolbar
     lateinit var drawerLayout: DrawerLayout
     lateinit var navView: NavigationView
-    var mp: MediaPlayer?=null
-
+    var mp: MediaPlayer? = null
+    lateinit var botonPlay: Button
+    lateinit var botonSiguiente : Button
+    lateinit var botonAnterior : Button
+    lateinit var barraProgreso: SeekBar
+    private var totalTime: Int = 0
 
 
 
@@ -30,8 +37,21 @@ class InicioReproductor : AppCompatActivity(), NavigationView.OnNavigationItemSe
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_inicio_reproductor)
 
+        barraProgreso = findViewById(R.id.barraProgreso)
+        botonPlay = findViewById(R.id.botonPlay)
+        botonAnterior = findViewById(R.id.botonAnterior)
+        botonSiguiente = findViewById(R.id.botonSiguiente)
 
-        initializeMediaPlayer()
+
+        mp = MediaPlayer()
+        if(mp !=null){
+            mp!!.setDataSource("http://192.168.1.73:8000/")
+            mp!!.prepare()
+            totalTime = mp!!.duration
+            mp!!.start()
+        }
+
+
 
         toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -48,18 +68,28 @@ class InicioReproductor : AppCompatActivity(), NavigationView.OnNavigationItemSe
 
 
 
+
     }
 
-    private fun initializeMediaPlayer() {
-        mp = MediaPlayer()
-        try {
-            mp!!.setDataSource("http://192.168.1.73:8000/")
-            mp!!.prepare()
-            mp!!.start()
-        } catch (ex: Exception) {
 
+
+
+    fun playBtnClick(v: View) {
+
+        if (this.mp?.isPlaying!!) {
+            // Stop
+            this.mp!!.pause()
+
+        } else {
+            // Start
+            this.mp!!.start()
         }
     }
+
+
+
+
+
 
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
