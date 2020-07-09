@@ -1,5 +1,6 @@
 package com.example.ougimusic
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.media.AudioAttributes
 import android.media.AudioManager
@@ -7,7 +8,13 @@ import android.media.MediaPlayer
 import android.media.MediaPlayer.OnPreparedListener
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
+import android.os.Message
 import android.view.MenuItem
+import android.view.View
+import android.widget.Button
+import android.widget.SeekBar
+import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -21,8 +28,14 @@ class InicioReproductor : AppCompatActivity(), NavigationView.OnNavigationItemSe
     lateinit var toolbar: Toolbar
     lateinit var drawerLayout: DrawerLayout
     lateinit var navView: NavigationView
-    var mp: MediaPlayer?=null
-
+    var mp: MediaPlayer? = null
+    lateinit var botonPlay: Button
+    lateinit var botonSiguiente : Button
+    lateinit var botonAnterior : Button
+    lateinit var barraProgreso: SeekBar
+    lateinit var textViewInicioCancion : TextView
+    lateinit var textViewFinCancion : TextView
+    private var totalTime: Int = 0
 
 
 
@@ -30,8 +43,22 @@ class InicioReproductor : AppCompatActivity(), NavigationView.OnNavigationItemSe
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_inicio_reproductor)
 
+        barraProgreso = findViewById(R.id.barraProgreso)
+        botonPlay = findViewById(R.id.botonPlay)
+        botonAnterior = findViewById(R.id.botonAnterior)
+        botonSiguiente = findViewById(R.id.botonSiguiente)
+        textViewInicioCancion = findViewById(R.id.textViewInicioCancion)
+        textViewFinCancion = findViewById(R.id.textViewFinCancion)
 
-        initializeMediaPlayer()
+        mp = MediaPlayer()
+        if(mp !=null){
+            mp!!.setDataSource("http://192.168.1.73:8000/")
+            mp!!.prepare()
+            totalTime = mp!!.duration
+            mp!!.start()
+        }
+
+
 
         toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -48,18 +75,90 @@ class InicioReproductor : AppCompatActivity(), NavigationView.OnNavigationItemSe
 
 
 
+
+        barraProgreso.max = totalTime
+        barraProgreso.setOnSeekBarChangeListener(
+            object : SeekBar.OnSeekBarChangeListener{
+                override fun onProgressChanged(
+                    seekBar: SeekBar?,
+                    progress: Int,
+                    fromUser: Boolean
+                ) {
+                    if(fromUser){
+                        mp!!.seekTo(progress)
+                    }
+                }
+
+                override fun onStartTrackingTouch(p0: SeekBar?) {
+                }
+
+                override fun onStopTrackingTouch(p0: SeekBar?) {
+                }
+            }
+        )
+
+        Thread(Runnable {
+            while (mp != null) {
+                try {
+                    var msg = Message()
+                    msg.what = mp!!.currentPosition
+                    handler.sendMessage(msg)
+                    Thread.sleep(1000)
+                } catch (e: InterruptedException) {
+                }
+            }
+        }).start()
+
+
     }
 
-    private fun initializeMediaPlayer() {
-        mp = MediaPlayer()
-        try {
-            mp!!.setDataSource("http://192.168.1.73:8000/")
-            mp!!.prepare()
-            mp!!.start()
-        } catch (ex: Exception) {
+    @SuppressLint("HandlerLeak")
+    var handler = object : Handler() {
+        override fun handleMessage(msg: Message) {
+            var currentPosition = msg.what
 
+            // Update positionBar
+            barraProgreso.progress = currentPosition
+
+            // Update Labels
+            var elapsedTime = createTimeLabel(currentPosition)
+            textViewInicioCancion.text = elapsedTime
+
+            var totalTimeConverted = createTimeLabel(totalTime)
+            textViewFinCancion.text = totalTimeConverted
         }
     }
+
+
+    fun createTimeLabel(time: Int): String {
+        var timeLabel = ""
+        var min = time / 1000 / 60
+        var sec = time / 1000 % 60
+
+        timeLabel = "$min:"
+        if (sec < 10) timeLabel += "0"
+        timeLabel += sec
+
+        return timeLabel
+    }
+
+    fun playBtnClick(v: View) {
+
+        if (this.mp?.isPlaying!!) {
+            // Stop
+            this.mp!!.pause()
+            botonPlay.setBackgroundResource(R.drawable.play_button)
+        } else {
+            // Start
+            this.mp!!.start()
+            botonPlay.setBackgroundResource(R.drawable.pause)
+        }
+    }
+
+
+
+
+
 
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
