@@ -4,6 +4,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import com.example.ougimusic.utilities.PlaylistData
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.activity_registrar_usuario.*
 import kotlinx.android.synthetic.main.playlist_list_view.*
 import okhttp3.*
@@ -13,6 +16,7 @@ import java.io.IOException
 
 class Playlists : AppCompatActivity() {
     private val client = OkHttpClient()
+    private val gson = GsonBuilder().create()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_playlists)
@@ -44,7 +48,9 @@ class Playlists : AppCompatActivity() {
                         Toast.makeText(applicationContext, "Existe un error de tipo: ${response.message}", Toast.LENGTH_SHORT).show()
                     }
                 }else{
-                    
+                    val bodyResponse = response.body!!.string()
+                    val testGson = gson.fromJson(bodyResponse, PlaylistData.Response::class.java)
+                    print("hola")
                 }
             }
         })

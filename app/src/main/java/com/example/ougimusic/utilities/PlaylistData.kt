@@ -1,6 +1,8 @@
+package com.example.ougimusic.utilities
+
 class PlaylistData {
 
-    data class Respose(
+    data class Response(
         val status: String,
         val data: List<Playlist>
     )
