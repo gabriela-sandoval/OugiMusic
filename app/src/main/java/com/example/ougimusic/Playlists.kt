@@ -32,7 +32,7 @@ class Playlists : AppCompatActivity() {
         """.trimIndent()
         val body = json.toRequestBody("application/json; charset=utf-8".toMediaTypeOrNull())
         val request = Request.Builder()
-            .url("http://192.168.0.7/playlist/getMyPlaylist")
+            .url("http://192.168.0.19/playlist/getMyPlaylist")
             .post(body)
             .build()
         client.newCall(request).enqueue(object : Callback{
@@ -48,9 +48,12 @@ class Playlists : AppCompatActivity() {
                         Toast.makeText(applicationContext, "Existe un error de tipo: ${response.message}", Toast.LENGTH_SHORT).show()
                     }
                 }else{
+
                     val bodyResponse = response.body!!.string()
-                    val testGson = gson.fromJson(bodyResponse, PlaylistData.Response::class.java)
-                    print("hola")
+                    val jsonResponse = gson.fromJson(bodyResponse, PlaylistData.Response::class.java)
+                    jsonResponse.data.forEach{
+                        println(it)
+                    }
                 }
             }
         })
