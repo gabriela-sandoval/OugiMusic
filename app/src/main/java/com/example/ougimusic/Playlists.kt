@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.annotation.ContentView
 import com.example.ougimusic.utilities.PlaylistData
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -12,6 +13,7 @@ import kotlinx.android.synthetic.main.playlist_list_view.*
 import okhttp3.*
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody.Companion.toRequestBody
+import org.w3c.dom.Element
 import java.io.IOException
 
 class Playlists : AppCompatActivity() {
@@ -52,7 +54,8 @@ class Playlists : AppCompatActivity() {
                     val bodyResponse = response.body!!.string()
                     val jsonResponse = gson.fromJson(bodyResponse, PlaylistData.Response::class.java)
                     jsonResponse.data.forEach{
-                        println(it)
+                        var tempPlaylist =  R.layout.playlist_list_view
+
                     }
                 }
             }
