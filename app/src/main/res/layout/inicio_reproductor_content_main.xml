@@ -145,7 +145,7 @@
                 app:layout_constraintVertical_bias="0.0" />
 
             <TextView
-                android:id="@+id/textViewNombreCanción2"
+                android:id="@+id/textViewNombreCanción"
                 android:layout_width="335dp"
                 android:layout_height="55dp"
                 android:layout_marginTop="371dp"
