@@ -1,13 +1,14 @@
 package com.example.ougimusic.Classes
+import java.io.Serializable
 
-public class Song {
+public class Song : Serializable  {
 
     var title: String? = null
     val number = 0
-    val artist: String? = null
-    val album: String? = null
-    val urlStreaming: String? = null
+    var artist: String? = null
+    var album: String? = null
+    var urlStreaming: String? = null
     val genre: String? = null
     val year: String? = null
-    val urlImage: String? = null
+    var urlImage: String? = null
 }
