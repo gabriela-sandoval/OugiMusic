@@ -14,37 +14,35 @@
             android:id="@+id/nav_radio"
             android:icon="@drawable/radio"
             android:title="Radio"/>
+
+        <item
+            android:id="@+id/nav_playlist"
+            android:icon="@drawable/library_music"
+            android:title="Playlists"/>
+        <item
+            android:id="@+id/nav_albumes"
+            android:icon="@drawable/albumes"
+            android:title="Álbumes"/>
+        <item
+            android:id="@+id/nav_artistas"
+            android:icon="@drawable/artista"
+            android:title="Artistas"/>
+        <item
+            android:id="@+id/nav_canciones"
+            android:icon="@drawable/canciones"
+            android:title="Canciones"/>
+        <item
+            android:id="@+id/nav_generos"
+            android:icon="@drawable/generos"
+            android:title="Géneros"/>
+        <item
+            android:id="@+id/nav_descargas"
+            android:icon="@drawable/descargas"
+            android:title="Descargas"/>
     </group>
 
 
-    <item android:title="Tu biblioteca">
-        <menu>
-            <item
-                android:id="@+id/nav_playlist"
-                android:icon="@drawable/library_music"
-                android:title="Playlists"/>
-            <item
-                android:id="@+id/nav_albumes"
-                android:icon="@drawable/albumes"
-                android:title="Álbumes"/>
-            <item
-                android:id="@+id/nav_artistas"
-                android:icon="@drawable/artista"
-                android:title="Artistas"/>
-            <item
-                android:id="@+id/nav_canciones"
-                android:icon="@drawable/canciones"
-                android:title="Canciones"/>
-            <item
-                android:id="@+id/nav_generos"
-                android:icon="@drawable/generos"
-                android:title="Géneros"/>
-            <item
-                android:id="@+id/nav_descargas"
-                android:icon="@drawable/descargas"
-                android:title="Descargas"/>
-        </menu>
-    </item>
+
 
     <item android:title="Configuración">
         <menu>

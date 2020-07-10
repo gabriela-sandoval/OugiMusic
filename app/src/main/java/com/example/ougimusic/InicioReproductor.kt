@@ -15,12 +15,14 @@ import android.view.View
 import android.widget.Button
 import android.widget.SeekBar
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
+import java.io.IOException
 
 
 class InicioReproductor : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -51,14 +53,14 @@ class InicioReproductor : AppCompatActivity(), NavigationView.OnNavigationItemSe
         textViewFinCancion = findViewById(R.id.textViewFinCancion)
 
         mp = MediaPlayer()
-        if(mp !=null){
+        try{
             mp!!.setDataSource("http://192.168.1.73:8000/")
             mp!!.prepare()
             totalTime = mp!!.duration
             mp!!.start()
+        }catch(e: IOException){
+            Toast.makeText(this, "mp3 not found", Toast.LENGTH_SHORT).show();
         }
-
-
 
         toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -164,6 +166,7 @@ class InicioReproductor : AppCompatActivity(), NavigationView.OnNavigationItemSe
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.nav_inicio -> {
+                mp?.reset()
                 val intent: Intent = Intent(this, InicioReproductor::class.java)
                 startActivity(intent)
                 finish()
