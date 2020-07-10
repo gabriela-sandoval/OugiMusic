@@ -8,7 +8,7 @@
         android:id="@+id/imageButton"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginStart="15dp"
+        android:layout_marginStart="0dp"
         android:background="@drawable/playlist_list_view"/>
 
     <LinearLayout

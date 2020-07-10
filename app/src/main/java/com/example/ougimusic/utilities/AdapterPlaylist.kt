@@ -1,5 +1,6 @@
 package com.example.ougimusic.utilities
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,10 +8,10 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
+import com.example.ougimusic.Canciones
 import com.example.ougimusic.R
 
 class AdapterPlaylist(var list: List<PlaylistData.Playlist>) : Adapter<AdapterPlaylist.PlayListViewHolder>(){
-
 
     class PlayListViewHolder(view:View): RecyclerView.ViewHolder(view){
         fun bindItem(data: PlaylistData.Playlist){
@@ -18,7 +19,11 @@ class AdapterPlaylist(var list: List<PlaylistData.Playlist>) : Adapter<AdapterPl
             name.text = data.name
 
             itemView.setOnClickListener{
-                Toast.makeText(itemView.context, "Id de este: ${data._id}", Toast.LENGTH_SHORT).show()
+                val intent = Intent(it.context, Canciones::class.java)
+                intent.putExtra("playlistName", data.name)
+                intent.putExtra("idPlaylist", data.name)
+                intent.putStringArrayListExtra("songList", data.songs)
+                it.context.startActivity(intent)
             }
         }
     }
