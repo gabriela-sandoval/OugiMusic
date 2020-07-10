@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ougimusic.utilities.AdapterPlaylist
 import com.example.ougimusic.utilities.AdapterSongsList
+import com.example.ougimusic.utilities.ContextVariables
 import com.example.ougimusic.utilities.PlaylistData
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -29,6 +30,7 @@ class Canciones : AppCompatActivity() {
     val gson = GsonBuilder().create()
     val songDataList = mutableListOf<PlaylistData.Song>()
     val adapter = AdapterSongsList(songDataList)
+    val global = ContextVariables()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,7 +51,6 @@ class Canciones : AppCompatActivity() {
 
     fun ReadData(songsList: ArrayList<String>){
         songsList.forEach {
-            println("Entra")
             val json = """
             {
             "songId": "$it"
@@ -57,7 +58,7 @@ class Canciones : AppCompatActivity() {
         """.trimIndent()
             val body = json.toRequestBody("application/json; charset=utf-8".toMediaTypeOrNull())
             val request = Request.Builder()
-                .url("http://192.168.0.20/songs/getSongId")
+                .url("${global.rootDirection}/songs/getSongId")
                 .post(body)
                 .build()
             client.newCall(request).enqueue(object : Callback {

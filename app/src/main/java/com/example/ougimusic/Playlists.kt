@@ -9,6 +9,7 @@ import androidx.annotation.ContentView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ougimusic.utilities.AdapterPlaylist
+import com.example.ougimusic.utilities.ContextVariables
 import com.example.ougimusic.utilities.PlaylistData
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -23,6 +24,8 @@ import java.io.IOException
 class Playlists : AppCompatActivity() {
     private val client = OkHttpClient()
     private val gson = GsonBuilder().create()
+    private val global = ContextVariables()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_playlists)
@@ -33,12 +36,12 @@ class Playlists : AppCompatActivity() {
 
         val json = """
             {
-            "user": "Batman"
+            "user": "${global.userName}"
             }
         """.trimIndent()
         val body = json.toRequestBody("application/json; charset=utf-8".toMediaTypeOrNull())
         val request = Request.Builder()
-            .url("http://192.168.0.20/playlist/getMyPlaylist")
+            .url("${global.rootDirection}playlist/getMyPlaylist")
             .post(body)
             .build()
         client.newCall(request).enqueue(object : Callback{
