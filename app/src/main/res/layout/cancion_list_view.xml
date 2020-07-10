@@ -45,7 +45,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/buttonPlay"
+        android:id="@+id/botonPlay"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginStart="10dp"
