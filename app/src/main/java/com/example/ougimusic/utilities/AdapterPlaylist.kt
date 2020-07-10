@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.example.ougimusic.R
 
-class AdapterPlaylist(var list: AbstractList<PlaylistData.Playlist>) : Adapter<AdapterPlaylist.PlayListViewHolder>(){
+class AdapterPlaylist(var list: List<PlaylistData.Playlist>) : Adapter<AdapterPlaylist.PlayListViewHolder>(){
 
 
     class PlayListViewHolder(view:View): RecyclerView.ViewHolder(view){

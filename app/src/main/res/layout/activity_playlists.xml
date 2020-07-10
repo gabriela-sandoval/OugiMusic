@@ -70,7 +70,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/my_recycler_view"
+        android:id="@+id/recyclePlaylist"
         android:scrollbars="vertical"
         android:layout_width="0dp"
         android:layout_height="0dp"

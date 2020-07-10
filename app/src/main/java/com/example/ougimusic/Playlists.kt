@@ -3,8 +3,12 @@ package com.example.ougimusic
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.annotation.ContentView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.ougimusic.utilities.AdapterPlaylist
 import com.example.ougimusic.utilities.PlaylistData
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -34,7 +38,7 @@ class Playlists : AppCompatActivity() {
         """.trimIndent()
         val body = json.toRequestBody("application/json; charset=utf-8".toMediaTypeOrNull())
         val request = Request.Builder()
-            .url("http://192.168.0.19/playlist/getMyPlaylist")
+            .url("http://192.168.0.20/playlist/getMyPlaylist")
             .post(body)
             .build()
         client.newCall(request).enqueue(object : Callback{
@@ -53,9 +57,11 @@ class Playlists : AppCompatActivity() {
 
                     val bodyResponse = response.body!!.string()
                     val jsonResponse = gson.fromJson(bodyResponse, PlaylistData.Response::class.java)
-                    jsonResponse.data.forEach{
-                        var tempPlaylist =  R.layout.playlist_list_view
-
+                    runOnUiThread{
+                        val recycler = findViewById<RecyclerView>(R.id.recyclePlaylist)
+                        recycler.layoutManager = LinearLayoutManager(parent, RecyclerView.VERTICAL, false)
+                        val adapter = AdapterPlaylist(jsonResponse.data)
+                        recycler.adapter = adapter
                     }
                 }
             }
