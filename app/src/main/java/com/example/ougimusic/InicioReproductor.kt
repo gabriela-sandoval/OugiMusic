@@ -2,11 +2,7 @@ package com.example.ougimusic
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.media.AudioAttributes
-import android.media.AudioManager
 import android.media.MediaPlayer
-import android.media.MediaPlayer.OnPreparedListener
-import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Message
@@ -21,6 +17,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import com.example.ougimusic.Classes.Queue
+import com.example.ougimusic.Classes.Song
 import com.google.android.material.navigation.NavigationView
 import java.io.IOException
 
@@ -37,7 +35,12 @@ class InicioReproductor : AppCompatActivity(), NavigationView.OnNavigationItemSe
     lateinit var barraProgreso: SeekBar
     lateinit var textViewInicioCancion : TextView
     lateinit var textViewFinCancion : TextView
+    lateinit var textViewNombreArtista : TextView
+    lateinit var textViewNombreCanción : TextView
     private var totalTime: Int = 0
+    var position = 0
+    var song: Song? = null
+
 
 
 
@@ -51,16 +54,8 @@ class InicioReproductor : AppCompatActivity(), NavigationView.OnNavigationItemSe
         botonSiguiente = findViewById(R.id.botonSiguiente)
         textViewInicioCancion = findViewById(R.id.textViewInicioCancion)
         textViewFinCancion = findViewById(R.id.textViewFinCancion)
-
-        mp = MediaPlayer()
-        try{
-            mp!!.setDataSource("http://192.168.1.73:8000/")
-            mp!!.prepare()
-            totalTime = mp!!.duration
-            mp!!.start()
-        }catch(e: IOException){
-            Toast.makeText(this, "mp3 not found", Toast.LENGTH_SHORT).show();
-        }
+        textViewNombreCanción = findViewById(R.id.textViewNombreCanción)
+        textViewNombreArtista = findViewById(R.id.textViewNombreArtista)
 
         toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -76,6 +71,16 @@ class InicioReproductor : AppCompatActivity(), NavigationView.OnNavigationItemSe
         navView.setNavigationItemSelectedListener(this)
 
 
+
+
+        val queue = intent.getSerializableExtra("Current_List") as? Queue
+        position = queue?.currentSongPosition!!
+        song = queue?.currentList?.get(this.position)
+
+
+        mp = MediaPlayer()
+        playSong(urlStreaming = song?.urlStreaming)
+        updateSongInfo(song?.title, song?.artist)
 
 
         barraProgreso.max = totalTime
@@ -113,6 +118,24 @@ class InicioReproductor : AppCompatActivity(), NavigationView.OnNavigationItemSe
 
 
     }
+
+    fun playSong(urlStreaming: String?) {
+
+        try{
+            mp!!.setDataSource(urlStreaming)
+            mp!!.prepare()
+            totalTime = mp!!.duration
+            mp!!.start()
+        }catch(e: IOException){
+            Toast.makeText(this, "mp3 not found", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    fun updateSongInfo(title: String?, artist: String?) {
+        textViewNombreCanción.text = title
+        textViewNombreArtista.text = artist
+    }
+
 
     @SuppressLint("HandlerLeak")
     var handler = object : Handler() {
@@ -156,6 +179,8 @@ class InicioReproductor : AppCompatActivity(), NavigationView.OnNavigationItemSe
             botonPlay.setBackgroundResource(R.drawable.pause)
         }
     }
+
+
 
 
 
