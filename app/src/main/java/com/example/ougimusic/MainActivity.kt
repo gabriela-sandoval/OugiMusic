@@ -137,7 +137,7 @@ class MainActivity : AppCompatActivity() {
         return boolean
     }
 
-    suspend fun DoLogin(): Boolean {
+    fun DoLogin(): Boolean {
         val username = editTextUsername.text
         val password = editTextTextPassword.text
         val json = """
