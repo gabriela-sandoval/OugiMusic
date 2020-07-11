@@ -65,7 +65,7 @@
                 app:layout_constraintVertical_bias="0.945" />
 
             <Button
-                android:id="@+id/botonPlay"
+                android:id="@+id/botonPlayGenre"
                 android:layout_width="66dp"
                 android:layout_height="69dp"
                 android:layout_marginBottom="64dp"
@@ -88,7 +88,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.641"
-                app:layout_constraintStart_toEndOf="@+id/botonPlay" />
+                app:layout_constraintStart_toEndOf="@+id/botonPlayGenre" />
 
             <Button
                 android:id="@+id/botonAnterior"
@@ -98,12 +98,12 @@
                 android:background="@drawable/previous"
                 android:onClick="previousSong"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/botonPlay"
+                app:layout_constraintEnd_toStartOf="@+id/botonPlayGenre"
                 app:layout_constraintHorizontal_bias="0.754"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
-                android:id="@+id/textViewNombreArtista"
+                android:id="@+id/textViewNombreGenero"
                 android:layout_width="320dp"
                 android:layout_height="25dp"
                 android:layout_marginTop="426dp"
@@ -153,7 +153,7 @@
                 android:text="Nombre canción"
                 android:textColor="#FFFFFF"
                 android:textSize="30sp"
-                app:layout_constraintBottom_toTopOf="@+id/textViewNombreArtista"
+                app:layout_constraintBottom_toTopOf="@+id/textViewNombreGenero"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
