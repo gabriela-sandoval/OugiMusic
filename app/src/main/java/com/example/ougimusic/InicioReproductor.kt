@@ -3,7 +3,6 @@ package com.example.ougimusic
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.media.MediaPlayer
-import android.media.MediaPlayer.OnCompletionListener
 import android.os.Bundle
 import android.os.Handler
 import android.os.Message
@@ -49,13 +48,13 @@ class InicioReproductor : AppCompatActivity(), NavigationView.OnNavigationItemSe
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_inicio_reproductor)
         barraProgreso = findViewById(R.id.barraProgreso)
-        botonPlay = findViewById(R.id.botonPlay)
+        botonPlay = findViewById(R.id.botonPlayGenre)
         botonAnterior = findViewById(R.id.botonAnterior)
         botonSiguiente = findViewById(R.id.botonSiguiente)
         textViewInicioCancion = findViewById(R.id.textViewInicioCancion)
         textViewFinCancion = findViewById(R.id.textViewFinCancion)
         textViewNombreCanción = findViewById(R.id.textViewNombreCanción)
-        textViewNombreArtista = findViewById(R.id.textViewNombreArtista)
+        textViewNombreArtista = findViewById(R.id.textViewNombreGenero)
         songImage = findViewById(R.id.songImage)
         toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
