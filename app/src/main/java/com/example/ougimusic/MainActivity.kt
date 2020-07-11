@@ -87,7 +87,7 @@ class MainActivity : AppCompatActivity() {
 
         buttonIngresar.setOnClickListener {
             if (CheckEnteredData()) {
-                var loginResult = false
+                var loginResult: Boolean
 
 
                 runBlocking (Dispatchers.Default){

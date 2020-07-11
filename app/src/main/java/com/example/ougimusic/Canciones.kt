@@ -9,10 +9,11 @@ import android.widget.Toast
 import androidx.annotation.RestrictTo
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.ougimusic.Classes.Song
 import com.example.ougimusic.utilities.AdapterPlaylist
 import com.example.ougimusic.utilities.AdapterSongsList
 import com.example.ougimusic.utilities.ContextVariables
-import com.example.ougimusic.utilities.PlaylistData
+import com.example.ougimusic.utilities.ResponseMessages
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.activity_registrar_usuario.*
@@ -28,7 +29,7 @@ class Canciones : AppCompatActivity() {
 
     val client = OkHttpClient()
     val gson = GsonBuilder().create()
-    val songDataList = mutableListOf<PlaylistData.Song>()
+    val songDataList = mutableListOf<Song>()
     val adapter = AdapterSongsList(songDataList)
     val global = ContextVariables()
 
@@ -85,7 +86,7 @@ class Canciones : AppCompatActivity() {
                         runOnUiThread {
                             val bodyResponse = response.body!!.string()
                             val jsonResponse =
-                                gson.fromJson(bodyResponse, PlaylistData.SongResponse::class.java)
+                                gson.fromJson(bodyResponse, ResponseMessages.SongResponse::class.java)
                             songDataList.add(jsonResponse.data)
                             adapter.notifyDataSetChanged()
                         }
