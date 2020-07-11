@@ -31,15 +31,26 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.733" />
 
+    <CheckBox
+        android:id="@+id/checkboxRememberMe"
+        android:layout_width="131dp"
+        android:layout_height="45dp"
+        android:text="Recuerdame"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.65" />
     <EditText
-        android:id="@+id/editTextTextEmailAddress"
+        android:id="@+id/editTextUsername"
         android:layout_width="290dp"
         android:layout_height="50dp"
         android:layout_marginTop="181dp"
         android:backgroundTint="#FFFFFF"
         android:drawableLeft="@android:drawable/ic_dialog_email"
         android:ems="10"
-        android:hint=" Correo electrónico"
+        android:hint=" Nombre de usuario"
         android:inputType="textEmailAddress"
         android:textColorHint="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/editTextTextPassword"

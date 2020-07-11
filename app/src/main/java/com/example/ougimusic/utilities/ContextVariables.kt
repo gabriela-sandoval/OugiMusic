@@ -3,7 +3,7 @@ package com.example.ougimusic.utilities
 import android.app.Application
 
 class ContextVariables : Application() {
-    val rootDirection:String ?= "http://192.168.0.1/"
+    val rootDirection:String ?= "http://192.168.0.7/"
     var userName:String
         get() {
             return userName
