@@ -19,8 +19,10 @@ import com.example.ougimusic.Classes.Queue
 import com.example.ougimusic.Classes.Song
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_registrar_usuario.*
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import okhttp3.*
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody.Companion.toRequestBody
@@ -98,16 +100,12 @@ class MainActivity : AppCompatActivity() {
         buttonIngresar.setOnClickListener {
             if (CheckEnteredData()) {
                 var loginResult = false
-                val job = GlobalScope.launch {
-                     DoLogin {
-                        println(it)
-                         loginResult = it
-                    }
+
+
+                runBlocking (Dispatchers.Default){
+                    loginResult = DoLogin()
                 }
                 Toast.makeText(applicationContext, "Cargando", Toast.LENGTH_SHORT).show()
-                while (job.isActive){
-
-                }
 
                 if (loginResult){
                     if (checkboxRememberMe.isChecked){
@@ -151,7 +149,7 @@ class MainActivity : AppCompatActivity() {
         return boolean
     }
 
-    fun DoLogin(onSuccess: (loginResult: Boolean) -> Unit) {
+    suspend fun DoLogin(): Boolean {
         val username = editTextUsername.text
         val password = editTextTextPassword.text
         val json = """
@@ -207,7 +205,6 @@ class MainActivity : AppCompatActivity() {
                     editor.apply()
                     result = true
                 }
-                onSuccess(result)
             }
         }catch (exception:ConnectException){
             runOnUiThread {
@@ -226,5 +223,6 @@ class MainActivity : AppCompatActivity() {
                 ).show()
             }
         }
+        return result
     }
 }
