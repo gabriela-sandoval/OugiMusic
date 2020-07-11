@@ -59,7 +59,8 @@ class MainActivity : AppCompatActivity() {
                          loginResult = it
                     }
                 }
-                while (!job.isCompleted){
+                Toast.makeText(applicationContext, "Cargando", Toast.LENGTH_SHORT).show()
+                while (job.isActive){
 
                 }
 
