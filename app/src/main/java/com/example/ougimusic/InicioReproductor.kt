@@ -3,10 +3,12 @@ package com.example.ougimusic
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.media.MediaPlayer
+import android.media.MediaPlayer.OnCompletionListener
 import android.os.Bundle
 import android.os.Handler
 import android.os.Message
 import android.os.PersistableBundle
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.*
@@ -23,7 +25,7 @@ import com.squareup.picasso.Picasso
 import java.io.IOException
 
 
-class InicioReproductor : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class InicioReproductor : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, MediaPlayer.OnCompletionListener {
 
     lateinit var toolbar: Toolbar
     lateinit var drawerLayout: DrawerLayout
@@ -76,6 +78,7 @@ class InicioReproductor : AppCompatActivity(), NavigationView.OnNavigationItemSe
             playSong(urlStreaming = song?.urlStreaming)
             updateSongInfo(song?.title, song?.artist)
             updateSongArt(song)
+
 
             barraProgreso.max = totalTime
             barraProgreso.setOnSeekBarChangeListener(
@@ -145,6 +148,9 @@ class InicioReproductor : AppCompatActivity(), NavigationView.OnNavigationItemSe
                 mp!!.prepare()
                 totalTime = mp!!.duration
                 mp!!.start()
+                mp!!.setOnCompletionListener(this)
+
+
             }catch(e: IOException){
                 Toast.makeText(this, "mp3 no encontrado", Toast.LENGTH_SHORT).show();
             }
@@ -156,6 +162,7 @@ class InicioReproductor : AppCompatActivity(), NavigationView.OnNavigationItemSe
         textViewNombreCanción.text = title
         textViewNombreArtista.text = artist
     }
+
 
 
     @SuppressLint("HandlerLeak")
@@ -208,7 +215,11 @@ class InicioReproductor : AppCompatActivity(), NavigationView.OnNavigationItemSe
 
 
     fun nextSong(v: View){
+        nextSongOnEnd()
 
+    }
+
+    fun nextSongOnEnd(){
         if(queue != null){
             var queueSize = queue?.currentList?.size
             if( position+1 < queueSize!!) {
@@ -229,7 +240,7 @@ class InicioReproductor : AppCompatActivity(), NavigationView.OnNavigationItemSe
 
         if(queue != null) {
             var queueSize = queue?.currentList?.size
-            if( position+1 < queueSize!! && position != 0) {
+            if( position+1 <= queueSize!! && position != 0) {
                 position--
                 var nextSong = queue?.currentList?.get(position)
                 song = nextSong
@@ -296,5 +307,10 @@ class InicioReproductor : AppCompatActivity(), NavigationView.OnNavigationItemSe
         }
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
+    }
+
+    override fun onCompletion(mp: MediaPlayer?) {
+        Log.d("Completion Listener","Song Complete")
+        nextSongOnEnd()
     }
 }
