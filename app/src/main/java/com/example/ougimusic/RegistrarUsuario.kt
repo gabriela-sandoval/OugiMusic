@@ -60,16 +60,16 @@ class RegistrarUsuario : AppCompatActivity() {
     fun registerUser(){
         val json = """
             {
-            "username": "${editTextTextPersonName}",
-            "password": "${editTextTextPassword2}",
-            "email": "${editTextTextEmailAddress2}"
+            "username": "${editTextTextPersonName.text}",
+            "password": "${editTextTextPassword2.text}",
+            "email": "${editTextTextEmailAddress2.text}"
             }
         """.trimIndent()
         val body = json.toRequestBody("application/json; charset=utf-8".toMediaTypeOrNull())
 
 
         val request = Request.Builder()
-                .url("http://192.168.0.7/create")
+                .url("http://192.168.1.73/create")
                 .post(body)
                 .build()
         client.newCall(request).enqueue(object : Callback {
