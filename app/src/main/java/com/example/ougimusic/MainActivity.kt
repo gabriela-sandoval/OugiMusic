@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
         queue.currentList?.add(song)
         queue.currentList?.add(song2)
         queue.currentList?.add(song3)
-        queue.currentSongPosition = 1
+        queue.currentSongPosition = 0
 
 
 

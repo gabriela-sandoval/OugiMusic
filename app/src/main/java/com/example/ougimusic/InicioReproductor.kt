@@ -2,7 +2,6 @@ package com.example.ougimusic
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.graphics.drawable.Drawable
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.Handler
@@ -20,8 +19,6 @@ import com.example.ougimusic.Classes.Song
 import com.google.android.material.navigation.NavigationView
 import com.squareup.picasso.Picasso
 import java.io.IOException
-import java.io.InputStream
-import java.net.URL
 
 
 class InicioReproductor : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -42,6 +39,7 @@ class InicioReproductor : AppCompatActivity(), NavigationView.OnNavigationItemSe
     private var totalTime: Int = 0
     var position = 0
     var song: Song? = null
+    var queue:Queue? = null
 
 
 
@@ -76,7 +74,7 @@ class InicioReproductor : AppCompatActivity(), NavigationView.OnNavigationItemSe
 
 
 
-        val queue = intent.getSerializableExtra("Current_List") as? Queue
+        queue = intent.getSerializableExtra("Current_List") as? Queue
         position = queue?.currentSongPosition!!
         song = queue?.currentList?.get(this.position)
 
@@ -84,9 +82,8 @@ class InicioReproductor : AppCompatActivity(), NavigationView.OnNavigationItemSe
         mp = MediaPlayer()
         playSong(urlStreaming = song?.urlStreaming)
         updateSongInfo(song?.title, song?.artist)
+        updateSongArt(song)
 
-
-        Picasso.get().load(song?.urlImage).into(songImage);
 
 
 
@@ -126,6 +123,11 @@ class InicioReproductor : AppCompatActivity(), NavigationView.OnNavigationItemSe
 
     }
 
+    fun updateSongArt(song: Song?){
+        Picasso.get().load(song?.urlImage).into(songImage);
+
+    }
+
     fun playSong(urlStreaming: String?) {
 
         try{
@@ -134,7 +136,7 @@ class InicioReproductor : AppCompatActivity(), NavigationView.OnNavigationItemSe
             totalTime = mp!!.duration
             mp!!.start()
         }catch(e: IOException){
-            Toast.makeText(this, "mp3 not found", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "mp3 no encontrado", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -187,6 +189,42 @@ class InicioReproductor : AppCompatActivity(), NavigationView.OnNavigationItemSe
         }
     }
 
+
+    fun nextSong(v: View){
+
+        var queueSize = queue?.currentList?.size
+        if( position+1 < queueSize!!) {
+            position++
+            var nextSong = queue?.currentList?.get(position)
+            song = nextSong
+            mp?.reset()
+            updateSongInfo(song?.title, song?.artist)
+            updateSongArt(song)
+            playSong(song?.urlStreaming)
+        }else{
+            Toast.makeText(this, "No hay más canciones", Toast.LENGTH_SHORT).show();
+
+        }
+
+    }
+
+    fun previousSong(v: View){
+
+        var queueSize = queue?.currentList?.size
+        if( position+1 < queueSize!! && position != 0) {
+            position--
+            var nextSong = queue?.currentList?.get(position)
+            song = nextSong
+            mp?.reset()
+            updateSongInfo(song?.title, song?.artist)
+            updateSongArt(song)
+            playSong(song?.urlStreaming)
+        }else {
+
+
+            Toast.makeText(this, "No hay más canciones", Toast.LENGTH_SHORT).show();
+        }
+    }
 
 
 
