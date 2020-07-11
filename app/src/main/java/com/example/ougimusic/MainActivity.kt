@@ -76,7 +76,7 @@ class MainActivity : AppCompatActivity() {
 
 
         buttonIngresar.setOnClickListener {
-            val intent: Intent = Intent(this, InicioReproductor::class.java)
+            val intent = Intent(this, InicioReproductor::class.java)
 
 
             intent.putExtra("Current_List", queue )
@@ -96,12 +96,9 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(applicationContext, "Cargando", Toast.LENGTH_SHORT).show()
 
                 if (loginResult){
-                    if (checkboxRememberMe.isChecked){
-                        // Repair this
-                        val intent = Intent(this, InicioReproductor::class.java)
-                        startActivity(intent)
-                        finish()
-                    }
+                    val intent = Intent(this, InicioReproductor::class.java)
+                    startActivity(intent)
+                    finish()
                 }
             }
         }
