@@ -1,5 +1,6 @@
 package com.example.ougimusic
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -27,10 +28,11 @@ class Playlists : AppCompatActivity() {
         buttonRegresar.setOnClickListener {
             finish()
         }
-
+        val userPreferences = getSharedPreferences("user", Context.MODE_PRIVATE)
+        val username = userPreferences.getString("username", "")
         val json = """
             {
-            "user": "${global.userName}"
+            "user": "$username"
             }
         """.trimIndent()
         val body = json.toRequestBody("application/json; charset=utf-8".toMediaTypeOrNull())

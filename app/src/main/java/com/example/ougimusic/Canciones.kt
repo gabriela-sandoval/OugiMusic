@@ -59,7 +59,7 @@ class Canciones : AppCompatActivity() {
         """.trimIndent()
             val body = json.toRequestBody("application/json; charset=utf-8".toMediaTypeOrNull())
             val request = Request.Builder()
-                .url("${global.rootDirection}/songs/getSongId")
+                .url("${global.rootDirection}songs/getSongId")
                 .post(body)
                 .build()
             client.newCall(request).enqueue(object : Callback {
