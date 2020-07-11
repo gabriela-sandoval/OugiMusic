@@ -2,32 +2,20 @@ package com.example.ougimusic
 
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
-import android.os.AsyncTask
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Switch
 import android.widget.Toast
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.ougimusic.utilities.AdapterPlaylist
 import com.example.ougimusic.utilities.ContextVariables
-import com.example.ougimusic.utilities.PlaylistData
 import com.example.ougimusic.utilities.UserCredentials
 import com.google.gson.GsonBuilder
 import com.example.ougimusic.Classes.Queue
 import com.example.ougimusic.Classes.Song
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_registrar_usuario.*
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import okhttp3.*
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody.Companion.toRequestBody
-import okhttp3.internal.wait
-import java.io.IOException
 import java.net.ConnectException
 import java.net.SocketTimeoutException
 
@@ -99,7 +87,7 @@ class MainActivity : AppCompatActivity() {
 
         buttonIngresar.setOnClickListener {
             if (CheckEnteredData()) {
-                var loginResult = false
+                var loginResult: Boolean
 
 
                 runBlocking (Dispatchers.Default){

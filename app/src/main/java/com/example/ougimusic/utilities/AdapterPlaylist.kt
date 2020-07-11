@@ -9,12 +9,13 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.example.ougimusic.Canciones
+import com.example.ougimusic.Classes.Playlist
 import com.example.ougimusic.R
 
-class AdapterPlaylist(var list: List<PlaylistData.Playlist>) : Adapter<AdapterPlaylist.PlayListViewHolder>(){
+class AdapterPlaylist(var list: List<Playlist>) : Adapter<AdapterPlaylist.PlayListViewHolder>(){
 
     class PlayListViewHolder(view:View): RecyclerView.ViewHolder(view){
-        fun bindItem(data: PlaylistData.Playlist){
+        fun bindItem(data: Playlist){
             val name = itemView.findViewById<TextView>(R.id.textViewNombrePlaylist)
             name.text = data.name
 

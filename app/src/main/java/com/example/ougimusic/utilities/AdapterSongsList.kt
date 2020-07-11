@@ -11,13 +11,14 @@ import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.example.ougimusic.Canciones
+import com.example.ougimusic.Classes.Song
 import com.example.ougimusic.R
 
-class AdapterSongsList(var list: List<PlaylistData.Song>) : Adapter<AdapterSongsList.SongsViewHolder>(){
+class AdapterSongsList(var list: List<Song>) : Adapter<AdapterSongsList.SongsViewHolder>(){
 
 
     class SongsViewHolder(view:View): RecyclerView.ViewHolder(view){
-        fun bindItem(data: PlaylistData.Song){
+        fun bindItem(data: Song){
             val title = itemView.findViewById<TextView>(R.id.textViewNombreCancion)
             title.text = data.title
             val artist = itemView.findViewById<TextView>(R.id.textViewArtista)
