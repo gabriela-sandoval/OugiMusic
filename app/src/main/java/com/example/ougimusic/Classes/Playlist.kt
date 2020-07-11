@@ -1,8 +1,8 @@
 package com.example.ougimusic.Classes
 
 class Playlist {
-    val _id: String? = null
-    val songs: ArrayList<String>? = null
-    val user: String? = null
-    val name: String? = null
+    var _id: String? = null
+    var songs: ArrayList<String>? = null
+    var user: String? = null
+    var name: String? = null
 }
