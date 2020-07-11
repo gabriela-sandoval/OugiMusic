@@ -3,10 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+    <ImageView
+        android:id="@+id/generoImage"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_marginLeft="15dp"
         android:background="@drawable/playlist_list_view" />
 
@@ -17,21 +17,23 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textViewNombreArtista"
+            android:id="@+id/textViewNombreGenero"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="86dp"
             android:layout_marginTop="10dp"
             android:text="Género"
-            android:textSize="24sp" />
+            android:textColor="#FFFFFF"
+            android:textSize="35sp" />
 
     </LinearLayout>
 
     <Button
-        android:id="@+id/botonPlay"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="5dp"
+        android:id="@+id/botonPlayGenre"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="15dp"
         android:background="@android:drawable/ic_media_play" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>
