@@ -2,16 +2,14 @@ package com.example.ougimusic
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.drawable.Drawable
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.Handler
 import android.os.Message
 import android.view.MenuItem
 import android.view.View
-import android.widget.Button
-import android.widget.SeekBar
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -20,7 +18,10 @@ import androidx.drawerlayout.widget.DrawerLayout
 import com.example.ougimusic.Classes.Queue
 import com.example.ougimusic.Classes.Song
 import com.google.android.material.navigation.NavigationView
+import com.squareup.picasso.Picasso
 import java.io.IOException
+import java.io.InputStream
+import java.net.URL
 
 
 class InicioReproductor : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -37,6 +38,7 @@ class InicioReproductor : AppCompatActivity(), NavigationView.OnNavigationItemSe
     lateinit var textViewFinCancion : TextView
     lateinit var textViewNombreArtista : TextView
     lateinit var textViewNombreCanción : TextView
+    lateinit var songImage: ImageView
     private var totalTime: Int = 0
     var position = 0
     var song: Song? = null
@@ -56,6 +58,7 @@ class InicioReproductor : AppCompatActivity(), NavigationView.OnNavigationItemSe
         textViewFinCancion = findViewById(R.id.textViewFinCancion)
         textViewNombreCanción = findViewById(R.id.textViewNombreCanción)
         textViewNombreArtista = findViewById(R.id.textViewNombreArtista)
+        songImage = findViewById(R.id.songImage)
 
         toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -81,6 +84,10 @@ class InicioReproductor : AppCompatActivity(), NavigationView.OnNavigationItemSe
         mp = MediaPlayer()
         playSong(urlStreaming = song?.urlStreaming)
         updateSongInfo(song?.title, song?.artist)
+
+
+        Picasso.get().load(song?.urlImage).into(songImage);
+
 
 
         barraProgreso.max = totalTime
@@ -179,7 +186,6 @@ class InicioReproductor : AppCompatActivity(), NavigationView.OnNavigationItemSe
             botonPlay.setBackgroundResource(R.drawable.pause)
         }
     }
-
 
 
 

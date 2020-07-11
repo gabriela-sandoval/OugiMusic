@@ -45,15 +45,14 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/image"
+                android:id="@+id/songImage"
                 android:layout_width="312dp"
                 android:layout_height="315dp"
                 android:layout_marginTop="36dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.494"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/fondoalbum" />
+                app:layout_constraintTop_toTopOf="parent"/>
 
             <SeekBar
                 android:id="@+id/barraProgreso"
@@ -145,7 +144,7 @@
                 app:layout_constraintVertical_bias="0.0" />
 
             <TextView
-                android:id="@+id/textViewNombreCanción2"
+                android:id="@+id/textViewNombreCanción"
                 android:layout_width="335dp"
                 android:layout_height="55dp"
                 android:layout_marginTop="371dp"
