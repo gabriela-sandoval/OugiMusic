@@ -7,17 +7,17 @@
         android:id="@+id/imageButton"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp"
         android:background="@drawable/fondoalbum" />
 
     <LinearLayout
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textViewNombreArtista"
+            android:id="@+id/textViewNombreCancion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Nombre canción"
@@ -30,10 +30,17 @@
             android:text="Artista" />
 
         <TextView
-            android:id="@+id/textViewAño"
+            android:id="@+id/textViewAlbum"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Albúm"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/textViewAño"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Año"
             android:textSize="10sp" />
     </LinearLayout>
 
@@ -41,7 +48,7 @@
         android:id="@+id/botonPlay"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="15dp"
         android:background="@android:drawable/ic_media_play" />
 
