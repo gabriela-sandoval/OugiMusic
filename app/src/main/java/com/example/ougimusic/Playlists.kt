@@ -1,24 +1,18 @@
 package com.example.ougimusic
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.LinearLayout
 import android.widget.Toast
-import androidx.annotation.ContentView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ougimusic.utilities.AdapterPlaylist
 import com.example.ougimusic.utilities.ContextVariables
-import com.example.ougimusic.utilities.PlaylistData
-import com.google.gson.Gson
+import com.example.ougimusic.utilities.ResponseMessages
 import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.activity_registrar_usuario.*
-import kotlinx.android.synthetic.main.playlist_list_view.*
 import okhttp3.*
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody.Companion.toRequestBody
-import org.w3c.dom.Element
 import java.io.IOException
 
 class Playlists : AppCompatActivity() {
@@ -59,7 +53,7 @@ class Playlists : AppCompatActivity() {
                 }else{
 
                     val bodyResponse = response.body!!.string()
-                    val jsonResponse = gson.fromJson(bodyResponse, PlaylistData.Response::class.java)
+                    val jsonResponse = gson.fromJson(bodyResponse, ResponseMessages.PlaylistResponse::class.java)
                     runOnUiThread{
                         val recycler = findViewById<RecyclerView>(R.id.recyclePlaylist)
                         recycler.layoutManager = LinearLayoutManager(parent, RecyclerView.VERTICAL, false)

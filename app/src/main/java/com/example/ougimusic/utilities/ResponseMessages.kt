@@ -7,9 +7,9 @@ import com.example.ougimusic.Classes.Playlist
 import com.example.ougimusic.Classes.Song
 import java.io.Serializable
 
-class PlaylistData : Serializable{
+class ResponseMessages : Serializable{
 
-    data class Response(
+    data class PlaylistResponse(
         val status: String,
         val data: List<Playlist>
     )
