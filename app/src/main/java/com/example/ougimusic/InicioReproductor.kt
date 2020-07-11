@@ -240,7 +240,7 @@ class InicioReproductor : AppCompatActivity(), NavigationView.OnNavigationItemSe
 
         if(queue != null) {
             var queueSize = queue?.currentList?.size
-            if( position+1 < queueSize!! && position != 0) {
+            if( position+1 <= queueSize!! && position != 0) {
                 position--
                 var nextSong = queue?.currentList?.get(position)
                 song = nextSong
