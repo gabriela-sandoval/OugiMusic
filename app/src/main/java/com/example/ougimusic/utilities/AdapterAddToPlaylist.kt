@@ -16,6 +16,8 @@ import com.example.ougimusic.Canciones
 import com.example.ougimusic.Classes.Playlist
 import com.example.ougimusic.R
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import okhttp3.*
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -51,7 +53,7 @@ class AdapterAddToPlaylist(var list: List<Playlist>, var context: Context, var s
             name.text = data.name
 
             itemView.setOnClickListener{
-                run{
+                GlobalScope.launch {
                     AddSongToPlaylist(data._id.toString(), "$songId");
                 }
                 (context as Activity).finish()
