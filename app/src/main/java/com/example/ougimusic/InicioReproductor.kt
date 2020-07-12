@@ -85,6 +85,11 @@ class InicioReproductor : AppCompatActivity(), NavigationView.OnNavigationItemSe
             updateSongInfo(song?.title, song?.artist)
             updateSongArt(song)
 
+            (this.application as ContextVariables).addSongQueue(song)
+
+            var queue = (this.application as ContextVariables).getQueue()
+
+            Log.d("canciones" , queue?.currentList?.get(0)?.title)
 
             barraProgreso.max = totalTime
             barraProgreso.setOnSeekBarChangeListener(
@@ -313,7 +318,7 @@ class InicioReproductor : AppCompatActivity(), NavigationView.OnNavigationItemSe
             }
             R.id.nav_historial_reproduccion -> {
                 mp?.stop()
-                val intent = Intent(this, Canciones::class.java)
+                val intent = Intent(this, CancionesHistorial::class.java)
                 startActivity(intent)
                 finish()
             }

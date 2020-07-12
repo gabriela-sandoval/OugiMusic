@@ -2,10 +2,11 @@ package com.example.ougimusic.utilities
 
 import android.app.Application
 import com.example.ougimusic.Classes.Queue
+import com.example.ougimusic.Classes.Song
 
 
 class ContextVariables : Application() {
-    val rootDirection:String ?= "http://192.168.0.2/"
+    val rootDirection:String ?= "http://192.168.1.73/"
     var userName:String
         get() {
             return userName
@@ -37,6 +38,15 @@ class ContextVariables : Application() {
 
     fun setQueue(queue: Queue?){
         this.queue = queue
+    }
+
+    fun addSongQueue(song : Song?){
+        if(this.queue != null){
+            this.queue!!.currentList!!.add(song!!)
+        }else{
+            this.queue = Queue()
+            this.queue!!.currentList!!.add(song!!)
+        }
     }
 
 

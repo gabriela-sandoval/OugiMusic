@@ -1,12 +1,15 @@
 package com.example.ougimusic
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.ougimusic.Classes.Queue
 import com.example.ougimusic.Classes.Song
 import com.example.ougimusic.utilities.AdapterSongsList
 import com.example.ougimusic.utilities.ContextVariables
@@ -29,11 +32,11 @@ class CancionesGenero : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_canciones)
-
-
-
         val intent = intent
         var genreName = intent.getStringExtra("GenreName")
+
+        val title = findViewById<TextView>(R.id.textViewPlaylistName)
+        title.text = genreName
 
         val recycler: RecyclerView = findViewById<RecyclerView>(R.id.recyclerPlaylistSongs)
         recycler.layoutManager = LinearLayoutManager(parent, RecyclerView.VERTICAL, false)
@@ -46,6 +49,16 @@ class CancionesGenero : AppCompatActivity() {
         }
     }
 
+    fun playAll(v: View){
+        if(songDataList.any()){
+            var queue = Queue()
+            queue.currentList = songDataList
+            queue.currentSongPosition = 0
+            val intent = Intent(this, InicioReproductor::class.java)
+            intent.putExtra("Current_List", queue)
+            startActivity(intent)
+        }
+    }
 
     fun ReadData(genreName: String?){
 
