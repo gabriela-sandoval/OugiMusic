@@ -34,4 +34,10 @@ class ResponseMessages : Serializable{
         val _id: String,
         val data: List<Song>
     )
+
+    data class searchResponse(
+        val status: String,
+        val data: List<Song>
+
+    )
 }
