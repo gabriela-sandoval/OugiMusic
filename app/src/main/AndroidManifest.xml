@@ -27,6 +27,7 @@
         <activity android:name=".InicioReproductor" />
         <activity android:name=".CancionesGenero" />
         <activity android:name=".AddToPlaylists"/>
+        <activity android:name=".AlbumesArtistas"/>
         <activity android:name=".CancionesHistorial" />
         <activity android:name=".CancionesPrincipal"/>
         <activity android:name=".MainActivity">
