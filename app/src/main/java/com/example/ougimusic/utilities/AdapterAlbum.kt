@@ -23,8 +23,7 @@ class AdapterAlbum(var list: List<Album>) : RecyclerView.Adapter<AdapterAlbum.Al
 
             itemView.setOnClickListener{
                 val intent = Intent(it.context, Canciones::class.java)
-                intent.putExtra("playlistName", data.albumname)
-                intent.putExtra("idPlaylist", data._id)
+                intent.putExtra("album", data)
                 it.context.startActivity(intent)
             }
         }

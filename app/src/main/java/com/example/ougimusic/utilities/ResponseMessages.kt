@@ -24,4 +24,9 @@ class ResponseMessages : Serializable{
         val _id: String,
         val data: List<Album>
     )
+
+    data class SongListResponse(
+        val _id: String,
+        val data: List<Song>
+    )
 }
