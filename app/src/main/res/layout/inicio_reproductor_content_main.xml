@@ -167,7 +167,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:background="@drawable/addtoplaylist"
-                android:onClick="addSongToPlaylist"
+                android:onClick="AddSongToPlaylist"
                 />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>

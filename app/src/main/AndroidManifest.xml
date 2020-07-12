@@ -23,6 +23,7 @@
         <activity android:name=".InicioReproductor" />
         <activity android:name=".CancionesGenero" />
         <activity android:name=".CancionesHistorial"/>
+        <activity android:name=".AddToPlaylists"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

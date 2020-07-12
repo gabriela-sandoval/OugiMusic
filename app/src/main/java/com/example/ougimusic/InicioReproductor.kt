@@ -336,42 +336,11 @@ class InicioReproductor : AppCompatActivity(), NavigationView.OnNavigationItemSe
         return true
     }
 
-    fun addSongToPlaylist(){
+    fun AddSongToPlaylist(v: View){
         val intent: Intent = Intent(this, AddToPlaylists::class.java)
         intent.putExtra("songId", "${song?._id}")
         startActivity(intent)
         finish()
-    }
-
-    fun GetPlaylist(): MutableList<Playlist>{
-        val client = OkHttpClient()
-        val gson = GsonBuilder().create()
-        val userPreferences = getSharedPreferences("user", Context.MODE_PRIVATE)
-        val username = userPreferences.getString("username", "")
-        val playlistsList = mutableListOf<Playlist>()
-        val json = """
-            {
-            "user": "$username"
-            }
-        """.trimIndent()
-        val body = json.toRequestBody("application/json; charset=utf-8".toMediaTypeOrNull())
-        val request = Request.Builder()
-            .url("${global.rootDirection}playlist/getMyPlaylist")
-            .post(body)
-            .build()
-        client.newCall(request).execute().use {response ->
-            if(!response.isSuccessful){
-                runOnUiThread{
-                    Toast.makeText(applicationContext, "Existe un error de tipo: ${response.message}", Toast.LENGTH_SHORT).show()
-                }
-            }else{
-
-                val bodyResponse = response.body!!.string()
-                val jsonResponse = gson.fromJson(bodyResponse, ResponseMessages.PlaylistResponse::class.java)
-                playlistsList.addAll(jsonResponse.data)
-            }
-        }
-        return playlistsList
     }
 
     override fun onCompletion(mp: MediaPlayer?) {
