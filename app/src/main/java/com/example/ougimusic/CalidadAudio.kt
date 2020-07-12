@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Switch
+import kotlinx.android.synthetic.main.activity_calidad_audio.*
 import kotlinx.android.synthetic.main.activity_registrar_usuario.*
 
 class CalidadAudio : AppCompatActivity() {
@@ -15,7 +16,7 @@ class CalidadAudio : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calidad_audio)
 
-        buttonRegresar.setOnClickListener {
+        buttonRegresar2.setOnClickListener {
             finish()
         }
 
