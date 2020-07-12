@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import com.example.ougimusic.utilities.ContextVariables
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_registrar_usuario.*
 import okhttp3.Call
@@ -21,6 +22,8 @@ class RegistrarUsuario : AppCompatActivity() {
     private val client = okhttp3.OkHttpClient()
     private val passwordPattern = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,32}\$".toRegex()
     private val emailPattern = "^[^@]+@[^@]+\\.[a-zA-Z]{2,}\$".toRegex()
+    val global = ContextVariables()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,7 +72,7 @@ class RegistrarUsuario : AppCompatActivity() {
 
 
         val request = Request.Builder()
-                .url("http://192.168.1.73/create")
+                .url("${global.rootDirection}create")
                 .post(body)
                 .build()
         client.newCall(request).enqueue(object : Callback {

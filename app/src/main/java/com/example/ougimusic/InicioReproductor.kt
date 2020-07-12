@@ -296,6 +296,12 @@ class InicioReproductor : AppCompatActivity(), NavigationView.OnNavigationItemSe
                 val intent = Intent(this, Playlists::class.java)
                 startActivity(intent)
             }
+            R.id.nav_radio -> {
+                mp?.stop()
+                val intent = Intent(this, Radio::class.java)
+                startActivity(intent)
+                finish()
+            }
             R.id.nav_artistas -> {
                 mp?.stop()
                 val intent = Intent(this, Artistas::class.java)
@@ -309,7 +315,7 @@ class InicioReproductor : AppCompatActivity(), NavigationView.OnNavigationItemSe
             }
             R.id.nav_canciones -> {
                 mp?.stop()
-                val intent = Intent(this, Canciones::class.java)
+                val intent = Intent(this, CancionesPrincipal::class.java)
                 startActivity(intent)
                 finish()
             }
@@ -328,6 +334,12 @@ class InicioReproductor : AppCompatActivity(), NavigationView.OnNavigationItemSe
             R.id.nav_historial_reproduccion -> {
                 mp?.stop()
                 val intent = Intent(this, CancionesHistorial::class.java)
+                startActivity(intent)
+                finish()
+            }
+            R.id.nav_calidad_audio-> {
+                mp?.stop()
+                val intent = Intent(this, CalidadAudio::class.java)
                 startActivity(intent)
                 finish()
             }
