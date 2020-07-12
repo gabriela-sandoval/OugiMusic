@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ougimusic.Canciones
+import com.example.ougimusic.CancionesAlbum
 import com.example.ougimusic.Classes.Album
 import com.example.ougimusic.R
 
@@ -22,7 +23,7 @@ class AdapterAlbum(var list: List<Album>) : RecyclerView.Adapter<AdapterAlbum.Al
             releaseYear.text = data.releaseYear
 
             itemView.setOnClickListener{
-                val intent = Intent(it.context, Canciones::class.java)
+                val intent = Intent(it.context, CancionesAlbum::class.java)
                 intent.putExtra("album", data)
                 it.context.startActivity(intent)
             }

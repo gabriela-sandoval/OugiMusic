@@ -27,7 +27,6 @@ class CancionesAlbum : AppCompatActivity() {
     val songDataList = mutableListOf<Song>()
     val adapter = AdapterSongsList(songDataList)
     val global = ContextVariables()
-    val album = intent.getSerializableExtra("album") as Album
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,22 +34,23 @@ class CancionesAlbum : AppCompatActivity() {
         setContentView(R.layout.activity_canciones)
         val title = findViewById<TextView>(R.id.textViewPlaylistName)
         val intent = intent
+        val album = intent.getSerializableExtra("album") as Album
         title.text = album.albumname
         val recycler: RecyclerView = findViewById<RecyclerView>(R.id.recyclerPlaylistSongs)
         recycler.layoutManager = LinearLayoutManager(parent, RecyclerView.VERTICAL, false)
         recycler.adapter = adapter
         run {
-            SearchAlbumSongs()
+            SearchAlbumSongs(album._id)
         }
         buttonRegresar.setOnClickListener {
             finish()
         }
     }
 
-    fun SearchAlbumSongs(){
+    fun SearchAlbumSongs(_id:String?){
         val json = """
         {
-        "albumId": "${album._id}"
+        "albumId": "${_id}"
         }
     """.trimIndent()
         val body = json.toRequestBody("application/json; charset=utf-8".toMediaTypeOrNull())
