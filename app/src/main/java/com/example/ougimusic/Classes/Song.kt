@@ -3,6 +3,7 @@ import java.io.Serializable
 
 public class Song : Serializable  {
 
+    var _id: String? = null
     var title: String? = null
     val number = 0
     var artist: String? = null

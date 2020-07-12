@@ -6,7 +6,7 @@ import com.example.ougimusic.Classes.Song
 
 
 class ContextVariables : Application() {
-    val rootDirection:String ?= "http://192.168.1.73/"
+    val rootDirection:String ?= "http://192.168.0.2/"
     var userName:String
         get() {
             return userName

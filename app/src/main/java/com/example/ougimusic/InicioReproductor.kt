@@ -1,6 +1,8 @@
 package com.example.ougimusic
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.media.MediaPlayer
 import android.os.Bundle
@@ -17,11 +19,18 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import com.example.ougimusic.Classes.Playlist
 import com.example.ougimusic.Classes.Queue
 import com.example.ougimusic.Classes.Song
 import com.example.ougimusic.utilities.ContextVariables
+import com.example.ougimusic.utilities.ResponseMessages
 import com.google.android.material.navigation.NavigationView
+import com.google.gson.GsonBuilder
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.layout_new_playlist.view.*
+import okhttp3.*
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.RequestBody.Companion.toRequestBody
 import java.io.IOException
 
 
@@ -337,6 +346,16 @@ class InicioReproductor : AppCompatActivity(), NavigationView.OnNavigationItemSe
         }
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
+    }
+
+    fun AddSongToPlaylist(v: View){
+        if (song?._id == null){
+            Toast.makeText(applicationContext, "No se ha seleccionado ninguna cancion", Toast.LENGTH_SHORT).show()
+        }else{
+            val intent: Intent = Intent(this, AddToPlaylists::class.java)
+            intent.putExtra("songId", "${song?._id.toString()}")
+            startActivity(intent)
+        }
     }
 
     override fun onCompletion(mp: MediaPlayer?) {
