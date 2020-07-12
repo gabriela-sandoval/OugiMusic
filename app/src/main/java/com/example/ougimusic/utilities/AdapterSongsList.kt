@@ -2,22 +2,29 @@ package com.example.ougimusic.utilities
 
 
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.example.ougimusic.Canciones
+import com.example.ougimusic.Classes.Queue
 import com.example.ougimusic.Classes.Song
+import com.example.ougimusic.InicioReproductor
 import com.example.ougimusic.R
+import com.example.ougimusic.utilities.ContextVariables
 
-class AdapterSongsList(var list: List<Song>) : Adapter<AdapterSongsList.SongsViewHolder>(){
+
+class AdapterSongsList(var list: List<Song>) : Adapter<AdapterSongsList.SongsViewHolder>() {
 
 
     class SongsViewHolder(view:View): RecyclerView.ViewHolder(view){
+
         fun bindItem(data: Song){
             val title = itemView.findViewById<TextView>(R.id.textViewNombreCancion)
             title.text = data.title
@@ -28,9 +35,15 @@ class AdapterSongsList(var list: List<Song>) : Adapter<AdapterSongsList.SongsVie
             val año = itemView.findViewById<TextView>(R.id.textViewAño)
             año.text = data.year
 
-
             itemView.setOnClickListener{
-                Toast.makeText(it.context, "${data.title}", Toast.LENGTH_SHORT).show()
+
+                var queue = Queue()
+                queue.currentList?.add(data)
+                queue.currentSongPosition = 0
+                val intent = Intent(it.context, InicioReproductor::class.java)
+                intent.putExtra("Current_List", queue)
+                it.context.startActivity(intent)
+
             }
         }
     }

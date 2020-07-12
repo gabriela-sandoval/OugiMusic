@@ -70,9 +70,9 @@ class InicioReproductor : AppCompatActivity(), NavigationView.OnNavigationItemSe
         toggle.syncState()
         navView.setNavigationItemSelectedListener(this)
 
-       // queue = intent.getSerializableExtra("Current_List") as? Queue
+        queue = intent.getSerializableExtra("Current_List") as? Queue
 
-        queue = (this.application as ContextVariables).getQueue()
+        //queue = (this.application as ContextVariables).getQueue()
 
 
 

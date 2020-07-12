@@ -73,7 +73,7 @@ class MainActivity : AppCompatActivity() {
         queue.currentList?.add(song3)
         queue.currentSongPosition = 0
 
-        //(this.application as ContextVariables).setQueue(queue)
+       //(this.application as ContextVariables).setQueue(queue)
 
 
 
@@ -81,10 +81,8 @@ class MainActivity : AppCompatActivity() {
 
 
         buttonIngresar.setOnClickListener {
+
             val intent = Intent(this, InicioReproductor::class.java)
-
-
-            intent.putExtra("Current_List", queue )
             startActivity(intent)
             finish()
         }

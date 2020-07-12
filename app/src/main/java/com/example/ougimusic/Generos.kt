@@ -33,10 +33,6 @@ class Generos : AppCompatActivity() {
         listGenero.adapter = AdapterGenres(applicationContext, listGeneros)
 
 
-
-
-
-
         buttonRegresar.setOnClickListener {
             val intent: Intent = Intent(this, InicioReproductor::class.java)
             startActivity(intent)
