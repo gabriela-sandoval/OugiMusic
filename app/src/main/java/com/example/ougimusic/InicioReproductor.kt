@@ -272,40 +272,48 @@ class InicioReproductor : AppCompatActivity(), NavigationView.OnNavigationItemSe
                 finish()
             }
             R.id.nav_buscar -> {
+                mp?.stop()
                 val intent = Intent(this, Buscar::class.java)
                 startActivity(intent)
                 finish()
             }
             R.id.nav_playlist -> {
+                mp?.stop()
                 val intent = Intent(this, Playlists::class.java)
                 startActivity(intent)
             }
             R.id.nav_artistas -> {
+                mp?.stop()
                 val intent = Intent(this, Artistas::class.java)
                 startActivity(intent)
                 finish()
             }
             R.id.nav_albumes -> {
+                mp?.stop()
                 val intent = Intent(this, Albumes::class.java)
                 startActivity(intent)
                 finish()
             }
             R.id.nav_canciones -> {
+                mp?.stop()
                 val intent = Intent(this, Canciones::class.java)
                 startActivity(intent)
                 finish()
             }
             R.id.nav_generos -> {
+                mp?.stop()
                 val intent = Intent(this, Generos::class.java)
                 startActivity(intent)
                 finish()
             }
             R.id.nav_descargas -> {
+                mp?.stop()
                 val intent = Intent(this, Canciones::class.java)
                 startActivity(intent)
                 finish()
             }
             R.id.nav_historial_reproduccion -> {
+                mp?.stop()
                 val intent = Intent(this, Canciones::class.java)
                 startActivity(intent)
                 finish()

@@ -2,13 +2,12 @@ package com.example.ougimusic.utilities
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.BaseAdapter
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
+import com.example.ougimusic.CancionesGenero
 import com.example.ougimusic.Classes.Genre
 import com.example.ougimusic.R
 
@@ -43,6 +42,14 @@ class AdapterGenres(var context: Context, var genres : ArrayList<Genre>) : BaseA
         var genre :Genre = getItem(position) as Genre
         viewHolder.name.text = genre.name
         viewHolder.image.setImageResource(genre.image)
+
+
+        view?.setOnClickListener{
+            var intent = Intent(it.context, CancionesGenero::class.java )
+            intent.putExtra("GenreName", genre.name)
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            it.context.startActivity(intent)
+        }
 
         return  view as View
     }

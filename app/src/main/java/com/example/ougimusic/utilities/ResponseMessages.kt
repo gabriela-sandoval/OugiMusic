@@ -18,4 +18,9 @@ class ResponseMessages : Serializable{
         val _id: String,
         val data: Song
     )
+
+    data class GenreResponse(
+        val status: String,
+        val data: List<Song>
+    )
 }
