@@ -337,7 +337,7 @@ class InicioReproductor : AppCompatActivity(), NavigationView.OnNavigationItemSe
     }
 
     fun AddSongToPlaylist(v: View){
-        if (song?._id != null){
+        if (song?._id == null){
             Toast.makeText(applicationContext, "No se ha seleccionado ninguna cancion", Toast.LENGTH_SHORT).show()
         }else{
             val intent: Intent = Intent(this, AddToPlaylists::class.java)

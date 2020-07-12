@@ -33,7 +33,7 @@ class AdapterAddToPlaylist(var list: List<Playlist>, var context: Context, var s
             val json = """
             {
             "listId": "$idList",
-            "song": "[{$idSong}]"
+            "songs": ["$idSong"]
             }
         """.trimIndent()
             var result = false
@@ -71,7 +71,7 @@ class AdapterAddToPlaylist(var list: List<Playlist>, var context: Context, var s
     }
 
     override fun onBindViewHolder(holder: PlayListViewHolder, position: Int) {
-        holder.bindItem(list[position], context, this.songId)
+        holder.bindItem(list[position], context, songId)
     }
 
 }
