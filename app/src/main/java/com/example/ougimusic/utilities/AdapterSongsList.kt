@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -18,6 +19,7 @@ import com.example.ougimusic.Classes.Song
 import com.example.ougimusic.InicioReproductor
 import com.example.ougimusic.R
 import com.example.ougimusic.utilities.ContextVariables
+import com.squareup.picasso.Picasso
 
 
 class AdapterSongsList(var list: List<Song>) : Adapter<AdapterSongsList.SongsViewHolder>() {
@@ -34,6 +36,9 @@ class AdapterSongsList(var list: List<Song>) : Adapter<AdapterSongsList.SongsVie
             album.text = data.album
             val año = itemView.findViewById<TextView>(R.id.textViewAño)
             año.text = data.year
+            val songImage = itemView.findViewById<ImageView>(R.id.generoImage)
+            Picasso.get().load(data?.urlImage).into(songImage);
+
 
             itemView.setOnClickListener{
 
