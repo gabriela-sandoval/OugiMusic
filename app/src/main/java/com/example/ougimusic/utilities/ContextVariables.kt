@@ -1,6 +1,8 @@
 package com.example.ougimusic.utilities
 
 import android.app.Application
+import com.example.ougimusic.Classes.Queue
+
 
 class ContextVariables : Application() {
     val rootDirection:String ?= "http://192.168.1.73/"
@@ -26,4 +28,25 @@ class ContextVariables : Application() {
         set(newToken:String){
             token = newToken
         }
+
+    private var queue:Queue? = null
+
+    fun getQueue():Queue?{
+        return queue
+    }
+
+    fun setQueue(queue: Queue?){
+        this.queue = queue
+    }
+
+
+    private var someVariable: String? = null
+
+    fun getSomeVariable(): String? {
+        return someVariable
+    }
+
+    fun setSomeVariable(someVariable: String?) {
+        this.someVariable = someVariable
+    }
 }
