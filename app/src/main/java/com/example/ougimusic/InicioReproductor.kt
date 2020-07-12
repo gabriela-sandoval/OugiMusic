@@ -322,6 +322,12 @@ class InicioReproductor : AppCompatActivity(), NavigationView.OnNavigationItemSe
                 startActivity(intent)
                 finish()
             }
+            R.id.nav_calidad_audio-> {
+                mp?.stop()
+                val intent = Intent(this, CalidadAudio::class.java)
+                startActivity(intent)
+                finish()
+            }
         }
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
