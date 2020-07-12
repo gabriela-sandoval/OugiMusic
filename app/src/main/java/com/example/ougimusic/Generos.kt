@@ -1,9 +1,10 @@
 package com.example.ougimusic
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.AdapterView.OnItemClickListener
 import android.widget.ListView
+import androidx.appcompat.app.AppCompatActivity
 import com.example.ougimusic.Classes.Genre
 import com.example.ougimusic.utilities.AdapterGenres
 import kotlinx.android.synthetic.main.activity_registrar_usuario.*

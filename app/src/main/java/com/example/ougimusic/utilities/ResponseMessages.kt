@@ -19,13 +19,18 @@ class ResponseMessages : Serializable{
         val _id: String,
         val data: Song
     )
-
-    data class AlbumResponse(
+  
+      data class AlbumResponse(
         val _id: String,
         val data: List<Album>
     )
 
-    data class SongListResponse(
+      data class GenreResponse(
+        val status: String,
+        val data: List<Song>
+      )
+      
+        data class SongListResponse(
         val _id: String,
         val data: List<Song>
     )
