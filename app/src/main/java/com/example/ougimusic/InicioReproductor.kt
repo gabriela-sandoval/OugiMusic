@@ -341,8 +341,7 @@ class InicioReproductor : AppCompatActivity(), NavigationView.OnNavigationItemSe
             Toast.makeText(applicationContext, "No se ha seleccionado ninguna cancion", Toast.LENGTH_SHORT).show()
         }else{
             val intent: Intent = Intent(this, AddToPlaylists::class.java)
-            //intent.putExtra("songId", "${song?._id.toString()}")
-            intent.putExtra("songId", "5f05331d2ae5950012bd2d2e")
+            intent.putExtra("songId", "${song?._id.toString()}")
             startActivity(intent)
         }
     }
