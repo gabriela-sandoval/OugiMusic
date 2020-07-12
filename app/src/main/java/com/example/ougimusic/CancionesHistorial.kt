@@ -1,7 +1,9 @@
 package com.example.ougimusic
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -41,6 +43,17 @@ class CancionesHistorial : AppCompatActivity() {
             finish()
         }
 
+    }
+
+    fun playAll(v: View){
+        if(songDataList.any()){
+            var queue = Queue()
+            queue.currentList = songDataList
+            queue.currentSongPosition = 0
+            val intent = Intent(this, InicioReproductor::class.java)
+            intent.putExtra("Current_List", queue)
+            startActivity(intent)
+        }
     }
 
     fun ReadData(queue: Queue?) {

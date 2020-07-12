@@ -1,12 +1,15 @@
 package com.example.ougimusic
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ougimusic.Classes.Album
+import com.example.ougimusic.Classes.Queue
 import com.example.ougimusic.Classes.Song
 import com.example.ougimusic.utilities.AdapterSongsList
 import com.example.ougimusic.utilities.ContextVariables
@@ -44,6 +47,17 @@ class CancionesAlbum : AppCompatActivity() {
         }
         buttonRegresar.setOnClickListener {
             finish()
+        }
+    }
+
+    fun playAll(v: View){
+        if(songDataList.any()){
+            var queue = Queue()
+            queue.currentList = songDataList
+            queue.currentSongPosition = 0
+            val intent = Intent(this, InicioReproductor::class.java)
+            intent.putExtra("Current_List", queue)
+            startActivity(intent)
         }
     }
 
