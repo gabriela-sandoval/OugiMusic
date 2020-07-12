@@ -12,7 +12,9 @@ import com.example.ougimusic.utilities.AdapterPlaylist
 import com.example.ougimusic.utilities.ContextVariables
 import com.example.ougimusic.utilities.ResponseMessages
 import com.google.gson.GsonBuilder
+import kotlinx.android.synthetic.main.activity_playlists.*
 import kotlinx.android.synthetic.main.activity_registrar_usuario.*
+import kotlinx.android.synthetic.main.activity_registrar_usuario.buttonRegresar
 import okhttp3.*
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody.Companion.toRequestBody
@@ -27,14 +29,20 @@ class Playlists : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_playlists)
         run{
-            getSongsPlaylist()
+            GetSongsPlaylist()
         }
         buttonRegresar.setOnClickListener {
             finish()
         }
+        buttonNewList.setOnClickListener{
+            val listName = "newlist1"
+            run {
+                CreateNewPlaylist(listName)
+            }
+        }
     }
 
-    fun getSongsPlaylist(){
+    fun GetSongsPlaylist(){
         val userPreferences = getSharedPreferences("user", Context.MODE_PRIVATE)
         val username = userPreferences.getString("username", "")
         val json = """
@@ -68,6 +76,40 @@ class Playlists : AppCompatActivity() {
                         recycler.layoutManager = LinearLayoutManager(parent, RecyclerView.VERTICAL, false)
                         val adapter = AdapterPlaylist(jsonResponse.data)
                         recycler.adapter = adapter
+                    }
+                }
+            }
+        })
+    }
+    fun CreateNewPlaylist(listName:String){
+        val userPreferences = getSharedPreferences("user", Context.MODE_PRIVATE)
+        val username = userPreferences.getString("username", "")
+        val json = """
+            {
+            "user": "$username",
+            "name": "$listName"
+            }
+        """.trimIndent()
+        val body = json.toRequestBody("application/json; charset=utf-8".toMediaTypeOrNull())
+        val request = Request.Builder()
+            .url("${global.rootDirection}playlist/CreatePlaylist")
+            .post(body)
+            .build()
+        client.newCall(request).enqueue(object : Callback{
+            override fun onFailure(call: Call, e: IOException) {
+                runOnUiThread{
+                    Toast.makeText(applicationContext, "No se pudo crear la lista: $listName", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onResponse(call: Call, response: Response) {
+                if(!response.isSuccessful){
+                        runOnUiThread{
+                            Toast.makeText(applicationContext, "Existe un error de tipo: ${response.message}", Toast.LENGTH_SHORT).show()
+                        }
+                }else{
+                    runOnUiThread{
+                        Toast.makeText(applicationContext, "Lista creada", Toast.LENGTH_SHORT).show()
                     }
                 }
             }
