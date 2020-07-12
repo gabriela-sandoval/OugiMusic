@@ -2,6 +2,7 @@ package com.example.ougimusic
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -24,13 +25,14 @@ class CancionesHistorial : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_canciones)
+        val title = findViewById<TextView>(R.id.textViewPlaylistName)
+        title.text = "Historial de reproducción"
 
         val recycler: RecyclerView = findViewById<RecyclerView>(R.id.recyclerPlaylistSongs)
         recycler.layoutManager = LinearLayoutManager(parent, RecyclerView.VERTICAL, false)
         recycler.adapter = adapter
         var queue = (this.application as ContextVariables).getQueue()
 
-        Log.d("canciones" , queue?.currentList?.get(0)?.title)
         ReadData(queue)
 
 

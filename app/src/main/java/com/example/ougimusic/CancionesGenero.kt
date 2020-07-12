@@ -29,11 +29,11 @@ class CancionesGenero : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_canciones)
-
-
-
         val intent = intent
         var genreName = intent.getStringExtra("GenreName")
+
+        val title = findViewById<TextView>(R.id.textViewPlaylistName)
+        title.text = genreName
 
         val recycler: RecyclerView = findViewById<RecyclerView>(R.id.recyclerPlaylistSongs)
         recycler.layoutManager = LinearLayoutManager(parent, RecyclerView.VERTICAL, false)
