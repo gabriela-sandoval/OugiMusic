@@ -15,7 +15,7 @@ class AdapterAlbum(var list: List<Album>) : RecyclerView.Adapter<AdapterAlbum.Al
     class AlbumViewHolder(view: View): RecyclerView.ViewHolder(view){
         fun bindItem(data: Album){
             val albumName = itemView.findViewById<TextView>(R.id.textViewNombreAlbum)
-            albumName.text = data.albumName
+            albumName.text = data.albumname
             val artist = itemView.findViewById<TextView>(R.id.textViewArtista)
             artist.text = data.artist
             val releaseYear = itemView.findViewById<TextView>(R.id.textViewAño)
@@ -23,7 +23,7 @@ class AdapterAlbum(var list: List<Album>) : RecyclerView.Adapter<AdapterAlbum.Al
 
             itemView.setOnClickListener{
                 val intent = Intent(it.context, Canciones::class.java)
-                intent.putExtra("playlistName", data.albumName)
+                intent.putExtra("playlistName", data.albumname)
                 intent.putExtra("idPlaylist", data._id)
                 it.context.startActivity(intent)
             }
@@ -31,7 +31,7 @@ class AdapterAlbum(var list: List<Album>) : RecyclerView.Adapter<AdapterAlbum.Al
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AlbumViewHolder {
-        val viewSave = LayoutInflater.from(parent.context).inflate(R.layout.playlist_list_view, parent, false)
+        val viewSave = LayoutInflater.from(parent.context).inflate(R.layout.album_list_view, parent, false)
         return AlbumViewHolder(viewSave)
     }
 
