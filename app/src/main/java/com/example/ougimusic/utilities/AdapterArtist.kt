@@ -11,6 +11,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.ougimusic.AlbumesArtistas
 import com.example.ougimusic.CancionesGenero
 import com.example.ougimusic.Classes.Artist
 import com.example.ougimusic.Classes.Genre
@@ -39,7 +40,9 @@ class AdapterArtist (var list: List<Artist>) : RecyclerView.Adapter<AdapterArtis
 
 
             itemView.setOnClickListener{
-
+                val intent = Intent(it.context, AlbumesArtistas::class.java)
+                intent.putExtra("Current_Artist", data.artist)
+                it.context.startActivity(intent)
 
             }
         }
