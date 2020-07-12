@@ -349,6 +349,7 @@ class InicioReproductor : AppCompatActivity(), NavigationView.OnNavigationItemSe
     }
 
     fun AddSongToPlaylist(v: View){
+        mp?.stop()
         if (song?._id == null){
             Toast.makeText(applicationContext, "No se ha seleccionado ninguna cancion", Toast.LENGTH_SHORT).show()
         }else{
