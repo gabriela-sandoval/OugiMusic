@@ -59,7 +59,7 @@
         android:layout_width="match_parent"
         android:layout_height="44dp"
         android:background="#1BC3C3"
-        android:text="Playlists"
+        android:text="Agregar a Playlists"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="30sp"
