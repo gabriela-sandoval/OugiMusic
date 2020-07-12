@@ -42,7 +42,9 @@ class Canciones : AppCompatActivity() {
         val title = findViewById<TextView>(R.id.textViewPlaylistName)
         val intent = intent
         title.text = intent.getStringExtra("playlistName")
+
         val songsList = intent.getStringArrayListExtra("songList")
+
 
         val recycler: RecyclerView = findViewById<RecyclerView>(R.id.recyclerPlaylistSongs)
         recycler.layoutManager = LinearLayoutManager(parent, RecyclerView.VERTICAL, false)
