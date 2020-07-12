@@ -31,10 +31,11 @@ class AddToPlaylists : AppCompatActivity() {
     private val gson = GsonBuilder().create()
     private val global = ContextVariables()
     private val playlistList = mutableListOf<Playlist>()
-    private var adapter = AdapterAddToPlaylist(playlistList, this, intent.getStringExtra("idSong"))
+    private var adapter = AdapterAddToPlaylist(playlistList, this, "DefaulString")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        adapter = AdapterAddToPlaylist(playlistList, this, intent.getStringExtra("songId"))
         setContentView(R.layout.activity_add_playlists)
         val recycler = findViewById<RecyclerView>(R.id.recyclePlaylist)
         recycler.layoutManager = LinearLayoutManager(parent, RecyclerView.VERTICAL, false)

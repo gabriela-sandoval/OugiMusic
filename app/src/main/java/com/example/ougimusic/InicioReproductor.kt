@@ -337,10 +337,15 @@ class InicioReproductor : AppCompatActivity(), NavigationView.OnNavigationItemSe
     }
 
     fun AddSongToPlaylist(v: View){
-        val intent: Intent = Intent(this, AddToPlaylists::class.java)
-        intent.putExtra("songId", "${song?._id}")
-        startActivity(intent)
-        finish()
+        if (song?._id != null){
+            Toast.makeText(applicationContext, "No se ha seleccionado ninguna cancion", Toast.LENGTH_SHORT).show()
+        }else{
+            val intent: Intent = Intent(this, AddToPlaylists::class.java)
+            //intent.putExtra("songId", "${song?._id.toString()}")
+            intent.putExtra("songId", "EsteEsUnTest")
+            startActivity(intent)
+            finish()
+        }
     }
 
     override fun onCompletion(mp: MediaPlayer?) {
