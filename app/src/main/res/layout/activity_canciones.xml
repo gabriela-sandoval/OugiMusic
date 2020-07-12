@@ -55,10 +55,11 @@
     </androidx.recyclerview.widget.RecyclerView>
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/buttonReproducir"
         android:layout_width="0dp"
         android:layout_height="42dp"
         android:background="#1BC3C3"
+        android:onClick="playAll"
         android:text="REPRODUCIR"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
