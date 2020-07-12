@@ -14,7 +14,8 @@
         android:usesCleartextTraffic="true">
         <activity android:name=".Generos"/>
         <activity android:name=".Canciones" />
-        <activity android:name=".Playlists" />
+        <activity android:name=".CancionesAlbum" />
+        <activity android:name=".Playlists"/>
         <activity android:name=".Artistas" />
         <activity android:name=".Albumes" />
         <activity android:name=".Buscar" />

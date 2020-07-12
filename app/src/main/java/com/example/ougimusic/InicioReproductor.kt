@@ -292,7 +292,6 @@ class InicioReproductor : AppCompatActivity(), NavigationView.OnNavigationItemSe
                 mp?.stop()
                 val intent = Intent(this, Albumes::class.java)
                 startActivity(intent)
-                finish()
             }
             R.id.nav_canciones -> {
                 mp?.stop()
