@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CalidadAudio">
+    tools:context=".Radio">
 
     <Button
-        android:id="@+id/buttonRegresar2"
+        android:id="@+id/buttonRegresar3"
         android:layout_width="43dp"
         android:layout_height="44dp"
         android:layout_marginStart="32dp"
@@ -19,11 +19,11 @@
         tools:visibility="visible" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/textView6"
         android:layout_width="412dp"
         android:layout_height="50dp"
         android:background="#1BC3C3"
-        android:text="Calidad de audio"
+        android:text="Radio"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="30sp"
@@ -35,48 +35,17 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <Switch
-        android:id="@+id/switchCalidadAlta"
-        android:layout_width="175dp"
-        android:layout_height="55dp"
+        android:id="@+id/switchCalidadAlta2"
+        android:layout_width="235dp"
+        android:layout_height="60dp"
         android:layout_marginTop="98dp"
-        android:text="Alta"
+        android:text="Empezar radio"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.228"
+        app:layout_constraintHorizontal_bias="0.352"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView5"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.015"
         tools:checked="true" />
-
-    <Switch
-        android:id="@+id/switchCalidadBaja"
-        android:layout_width="175dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="98dp"
-        android:text="Baja"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.228"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView5"
-        app:layout_constraintVertical_bias="0.275"
-        tools:checked="false" />
-
-    <Switch
-        android:id="@+id/switchCalidadMedia"
-        android:layout_width="175dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="98dp"
-        android:text="Media"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.228"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView5"
-        app:layout_constraintVertical_bias="0.141"
-        tools:checked="false" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

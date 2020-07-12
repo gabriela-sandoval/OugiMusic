@@ -287,6 +287,12 @@ class InicioReproductor : AppCompatActivity(), NavigationView.OnNavigationItemSe
                 val intent = Intent(this, Playlists::class.java)
                 startActivity(intent)
             }
+            R.id.nav_radio -> {
+                mp?.stop()
+                val intent = Intent(this, Radio::class.java)
+                startActivity(intent)
+                finish()
+            }
             R.id.nav_artistas -> {
                 mp?.stop()
                 val intent = Intent(this, Artistas::class.java)

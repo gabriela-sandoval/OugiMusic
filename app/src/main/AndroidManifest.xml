@@ -14,7 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".CalidadAudio"/>
+        <activity android:name=".Radio"></activity>
+        <activity android:name=".CalidadAudio" />
         <activity android:name=".Generos" />
         <activity android:name=".Canciones" />
         <activity android:name=".CancionesAlbum" />
