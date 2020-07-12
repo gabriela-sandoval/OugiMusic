@@ -1,28 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.ougimusic">
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".utilities.ContextVariables"
-        android:fullBackupContent="true"
         android:allowBackup="true"
+        android:fullBackupContent="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Generos"/>
+        <activity android:name=".CalidadAudio"/>
+        <activity android:name=".Generos" />
         <activity android:name=".Canciones" />
         <activity android:name=".CancionesAlbum" />
-        <activity android:name=".Playlists"/>
+        <activity android:name=".Playlists" />
         <activity android:name=".Artistas" />
         <activity android:name=".Albumes" />
         <activity android:name=".Buscar" />
         <activity android:name=".RegistrarUsuario" />
         <activity android:name=".InicioReproductor" />
         <activity android:name=".CancionesGenero" />
-        <activity android:name=".CancionesHistorial"/>
+        <activity android:name=".CancionesHistorial" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
