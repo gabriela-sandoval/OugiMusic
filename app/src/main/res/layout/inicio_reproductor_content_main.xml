@@ -30,6 +30,7 @@
                     android:layout_weight="0"
                     app:srcCompat="@drawable/logo" />
             </LinearLayout>
+
         </androidx.appcompat.widget.Toolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -158,6 +159,16 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.304" />
+
+            <Button
+                android:id="@+id/buttonAddToPlaylist"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:background="@drawable/addtoplaylist"
+                android:onClick="addSongToPlaylist"
+                />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 
