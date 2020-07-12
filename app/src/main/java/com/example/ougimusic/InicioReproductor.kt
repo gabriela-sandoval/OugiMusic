@@ -3,7 +3,6 @@ package com.example.ougimusic
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.media.MediaPlayer
-import android.media.MediaPlayer.OnCompletionListener
 import android.os.Bundle
 import android.os.Handler
 import android.os.Message
@@ -20,6 +19,7 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.ougimusic.Classes.Queue
 import com.example.ougimusic.Classes.Song
+import com.example.ougimusic.utilities.ContextVariables
 import com.google.android.material.navigation.NavigationView
 import com.squareup.picasso.Picasso
 import java.io.IOException
@@ -44,18 +44,20 @@ class InicioReproductor : AppCompatActivity(), NavigationView.OnNavigationItemSe
     var position = 0
     var song: Song? = null
     var queue:Queue? = null
+    private val global = ContextVariables()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_inicio_reproductor)
         barraProgreso = findViewById(R.id.barraProgreso)
-        botonPlay = findViewById(R.id.botonPlay)
+        botonPlay = findViewById(R.id.botonPlayGenre)
         botonAnterior = findViewById(R.id.botonAnterior)
         botonSiguiente = findViewById(R.id.botonSiguiente)
         textViewInicioCancion = findViewById(R.id.textViewInicioCancion)
         textViewFinCancion = findViewById(R.id.textViewFinCancion)
         textViewNombreCanción = findViewById(R.id.textViewNombreCanción)
-        textViewNombreArtista = findViewById(R.id.textViewNombreArtista)
+        textViewNombreArtista = findViewById(R.id.textViewNombreGenero)
         songImage = findViewById(R.id.songImage)
         toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -69,6 +71,10 @@ class InicioReproductor : AppCompatActivity(), NavigationView.OnNavigationItemSe
         navView.setNavigationItemSelectedListener(this)
 
         queue = intent.getSerializableExtra("Current_List") as? Queue
+
+        //queue = (this.application as ContextVariables).getQueue()
+
+
 
         if(queue != null){
             position = queue?.currentSongPosition!!

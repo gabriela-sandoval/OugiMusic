@@ -4,11 +4,14 @@ import android.content.Intent
 import android.os.AsyncTask
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RestrictTo
+import androidx.core.view.get
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.ougimusic.Classes.Queue
 import com.example.ougimusic.Classes.Song
 import com.example.ougimusic.utilities.AdapterPlaylist
 import com.example.ougimusic.utilities.AdapterSongsList
@@ -44,10 +47,23 @@ class Canciones : AppCompatActivity() {
         recycler.layoutManager = LinearLayoutManager(parent, RecyclerView.VERTICAL, false)
         recycler.adapter = adapter
         ReadData(songsList)
+
+
+
         buttonRegresar.setOnClickListener {
             finish()
         }
+    }
 
+    fun playAll(v: View){
+        if(songDataList.any()){
+            var queue = Queue()
+            queue.currentList = songDataList
+            queue.currentSongPosition = 0
+            val intent = Intent(this, InicioReproductor::class.java)
+            intent.putExtra("Current_List", queue)
+            startActivity(intent)
+        }
     }
 
     fun ReadData(songsList: ArrayList<String>){
@@ -97,3 +113,5 @@ class Canciones : AppCompatActivity() {
         }
     }
 }
+
+
