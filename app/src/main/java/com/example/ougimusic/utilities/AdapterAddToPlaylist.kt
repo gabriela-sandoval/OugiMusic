@@ -33,7 +33,7 @@ class AdapterAddToPlaylist(var list: List<Playlist>, var context: Context, var s
             val json = """
             {
             "listId": "$idList",
-            "songs": "[{$idSong}]
+            "song": "[{$idSong}]"
             }
         """.trimIndent()
             var result = false

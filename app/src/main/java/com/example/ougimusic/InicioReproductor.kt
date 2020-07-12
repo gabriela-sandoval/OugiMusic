@@ -342,9 +342,8 @@ class InicioReproductor : AppCompatActivity(), NavigationView.OnNavigationItemSe
         }else{
             val intent: Intent = Intent(this, AddToPlaylists::class.java)
             //intent.putExtra("songId", "${song?._id.toString()}")
-            intent.putExtra("songId", "EsteEsUnTest")
+            intent.putExtra("songId", "5f05331d2ae5950012bd2d2e")
             startActivity(intent)
-            finish()
         }
     }
 
