@@ -34,20 +34,6 @@ class Playlists : AppCompatActivity() {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        super.onCreateOptionsMenu(menu)
-        menuInflater.inflate(R.menu.inicio_reproductor_menu, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
-            R.id.nav_new_list ->
-                Toast.makeText(this, "${item.itemId.toString()}", Toast.LENGTH_SHORT).show()
-        }
-        return super.onOptionsItemSelected(item)
-    }
-
     fun getSongsPlaylist(){
         val userPreferences = getSharedPreferences("user", Context.MODE_PRIVATE)
         val username = userPreferences.getString("username", "")
