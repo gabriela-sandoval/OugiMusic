@@ -3,6 +3,8 @@ package com.example.ougimusic
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -24,10 +26,29 @@ class Playlists : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_playlists)
-
+        run{
+            getSongsPlaylist()
+        }
         buttonRegresar.setOnClickListener {
             finish()
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        super.onCreateOptionsMenu(menu)
+        menuInflater.inflate(R.menu.inicio_reproductor_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.nav_new_list ->
+                Toast.makeText(this, "${item.itemId.toString()}", Toast.LENGTH_SHORT).show()
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    fun getSongsPlaylist(){
         val userPreferences = getSharedPreferences("user", Context.MODE_PRIVATE)
         val username = userPreferences.getString("username", "")
         val json = """
