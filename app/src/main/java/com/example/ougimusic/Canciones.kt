@@ -47,7 +47,6 @@ class Canciones : AppCompatActivity() {
         buttonRegresar.setOnClickListener {
             finish()
         }
-
     }
 
     fun ReadData(songsList: ArrayList<String>){

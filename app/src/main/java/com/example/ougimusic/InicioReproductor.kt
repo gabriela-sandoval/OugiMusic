@@ -19,6 +19,7 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.ougimusic.Classes.Queue
 import com.example.ougimusic.Classes.Song
+import com.example.ougimusic.utilities.ContextVariables
 import com.google.android.material.navigation.NavigationView
 import com.squareup.picasso.Picasso
 import java.io.IOException
@@ -43,6 +44,8 @@ class InicioReproductor : AppCompatActivity(), NavigationView.OnNavigationItemSe
     var position = 0
     var song: Song? = null
     var queue:Queue? = null
+    private val global = ContextVariables()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,7 +70,11 @@ class InicioReproductor : AppCompatActivity(), NavigationView.OnNavigationItemSe
         toggle.syncState()
         navView.setNavigationItemSelectedListener(this)
 
-        queue = intent.getSerializableExtra("Current_List") as? Queue
+       // queue = intent.getSerializableExtra("Current_List") as? Queue
+
+        queue = (this.application as ContextVariables).getQueue()
+
+
 
         if(queue != null){
             position = queue?.currentSongPosition!!

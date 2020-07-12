@@ -2,19 +2,20 @@ package com.example.ougimusic
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.example.ougimusic.Classes.Queue
+import com.example.ougimusic.Classes.Song
 import com.example.ougimusic.utilities.ContextVariables
 import com.example.ougimusic.utilities.UserCredentials
 import com.google.gson.GsonBuilder
-import com.example.ougimusic.Classes.Queue
-import com.example.ougimusic.Classes.Song
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
-import okhttp3.*
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.OkHttpClient
+import okhttp3.Request
 import okhttp3.RequestBody.Companion.toRequestBody
 import java.net.ConnectException
 import java.net.SocketTimeoutException
@@ -71,6 +72,10 @@ class MainActivity : AppCompatActivity() {
         queue.currentList?.add(song2)
         queue.currentList?.add(song3)
         queue.currentSongPosition = 0
+
+        //(this.application as ContextVariables).setQueue(queue)
+
+
 
 
 
