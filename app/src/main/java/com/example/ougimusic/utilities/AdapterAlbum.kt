@@ -4,12 +4,14 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ougimusic.Canciones
 import com.example.ougimusic.CancionesAlbum
 import com.example.ougimusic.Classes.Album
 import com.example.ougimusic.R
+import com.squareup.picasso.Picasso
 
 class AdapterAlbum(var list: List<Album>) : RecyclerView.Adapter<AdapterAlbum.AlbumViewHolder>(){
 
@@ -21,10 +23,12 @@ class AdapterAlbum(var list: List<Album>) : RecyclerView.Adapter<AdapterAlbum.Al
             artist.text = data.artist
             val releaseYear = itemView.findViewById<TextView>(R.id.textViewAño)
             releaseYear.text = data.releaseYear
+            val songImage = itemView.findViewById<ImageView>(R.id.generoImage)
+            Picasso.get().load(data?.urlImage).into(songImage);
 
             itemView.setOnClickListener{
                 val intent = Intent(it.context, CancionesAlbum::class.java)
-                intent.putExtra("album", data)
+                intent.putExtra("album", data)  
                 it.context.startActivity(intent)
             }
         }
